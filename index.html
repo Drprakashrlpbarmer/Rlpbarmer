@@ -2,70 +2,75 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>डॉ. प्रकाश काकड़ | RLP बाड़मेर</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    html { scroll-behavior: smooth; }
-    .fade-in { opacity: 0; transform: translateY(30px); animation: fadeIn 1s forwards; }
-    @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f7fafc;
+      margin: 0;
+      padding: 0;
+      color: #2d3748;
+    }
+    header {
+      background: linear-gradient(to right, #2f855a, #ecc94b);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .form {
+      max-width: 600px;
+      margin: 20px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      background-color: #2f855a;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    iframe {
+      width: 100%;
+      height: 300px;
+      margin-top: 40px;
+      border-radius: 12px;
+      border: none;
+    }
   </style>
 </head>
-<body class="font-[Poppins] bg-gray-50 text-gray-800">
+<body>
 
-  <!-- Hero Section -->
-  <header class="bg-gradient-to-r from-green-700 to-yellow-500 text-white py-16 px-6 text-center shadow-lg">
-    <h1 class="text-4xl sm:text-5xl font-bold mb-4">डॉ. प्रकाश काकड़</h1>
-    <p class="text-xl">युवा नेतृत्व | RLP बाड़मेर | हनुमान जी की प्रेरणा</p>
-    <img src="hero.jpg" class="mx-auto mt-6 w-40 h-40 rounded-full shadow-lg border-4 border-white fade-in" alt="Dr. Prakash Kakad">
-  </header>
+<header>
+  <h1>डॉ. प्रकाश काकड़</h1>
+  <p>युवा नेता | RLP बाड़मेर | जय बजरंग बली 🚩</p>
+</header>
 
-  <!-- About Section -->
-  <section class="py-12 px-6 max-w-5xl mx-auto">
-    <h2 class="text-3xl font-semibold text-green-700 mb-4">मेरे बारे में</h2>
-    <p class="leading-relaxed text-lg">मैं <strong>प्रकाश काकड़</strong>, राष्ट्रीय लोकतांत्रिक पार्टी (RLP) से जुड़ा एक समर्पित युवा नेता हूं। मेरा जन्म स्थान पीपली बेरी, बमरला (बाड़मेर) है। बचपन से ही मुझे जनसेवा और नेतृत्व का जुनून रहा है।</p>
-    <p class="mt-3 leading-relaxed text-lg">मैंने शिक्षा, गांव और युवाओं की आवाज को सदैव प्राथमिकता दी है। मैं मानता हूं कि हर नागरिक को उसकी ताकत का अहसास कराना ही एक सच्चे नेता की पहचान है।</p>
-  </section>
+<div class="form">
+  <h2>✍️ Join RLP Form</h2>
+  <form>
+    <input type="text" placeholder="पूरा नाम" required /><br />
+    <input type="text" placeholder="विधानसभा क्षेत्र" required /><br />
+    <input type="text" placeholder="लोकसभा क्षेत्र" required /><br />
+    <button type="submit">सबमिट करें</button>
+  </form>
+</div>
 
-  <!-- Vision Cards -->
-  <section class="bg-white py-10 px-6">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl font-semibold text-center text-green-700 mb-8">मेरा विज़न</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        <div class="bg-yellow-100 p-6 rounded-xl shadow-md fade-in">
-          <h3 class="text-xl font-bold mb-2 text-green-800">युवाओं को मंच</h3>
-          <p>हर युवा को मौका मिले – यही सपना है।</p>
-        </div>
-        <div class="bg-yellow-100 p-6 rounded-xl shadow-md fade-in">
-          <h3 class="text-xl font-bold mb-2 text-green-800">शिक्षा की क्रांति</h3>
-          <p>गांव-गांव तक गुणवत्तापूर्ण शिक्षा पहुंचाना।</p>
-        </div>
-        <div class="bg-yellow-100 p-6 rounded-xl shadow-md fade-in">
-          <h3 class="text-xl font-bold mb-2 text-green-800">भ्रष्टाचार का अंत</h3>
-          <p>ईमानदार नेतृत्व की स्थापना करना।</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Gallery -->
-  <section class="py-12 px-6 max-w-6xl mx-auto">
-    <h2 class="text-3xl font-semibold text-green-700 mb-6 text-center">गैलरी</h2>
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-      <img src="gallery1.jpg" class="rounded-xl shadow-md object-cover w-full h-40 fade-in" alt="Gallery Image">
-      <img src="gallery2.jpg" class="rounded-xl shadow-md object-cover w-full h-40 fade-in" alt="Gallery Image">
-      <img src="gallery3.jpg" class="rounded-xl shadow-md object-cover w-full h-40 fade-in" alt="Gallery Image">
-      <img src="gallery4.jpg" class="rounded-xl shadow-md object-cover w-full h-40 fade-in" alt="Gallery Image">
-      <img src="hero.jpg" class="rounded-xl shadow-md object-cover w-full h-40 fade-in" alt="Gallery Image">
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-green-700 text-white text-center py-4">
-    <p>© 2025 डॉ. प्रकाश काकड़ | All Rights Reserved | Powered by RLP Barmer</p>
-  </footer>
+<iframe src="https://www.youtube.com/embed/lWavhY0gUzk" allowfullscreen></iframe>
 
 </body>
 </html>
