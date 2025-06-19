@@ -2,74 +2,70 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dr. Prakash Kakad | RLP Barmer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>डॉ. प्रकाश काकड़ | RLP बाड़मेर</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    .fade-in { animation: fadeIn 1s ease-in-out forwards; opacity: 0; }
+    html { scroll-behavior: smooth; }
+    .fade-in { opacity: 0; transform: translateY(30px); animation: fadeIn 1s forwards; }
     @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
   </style>
 </head>
-<body class="bg-gray-100 text-gray-900 font-[Montserrat]">
-
-  <!-- Navbar -->
-  <nav class="bg-gradient-to-r from-green-700 to-yellow-500 text-white p-4 shadow-lg">
-    <div class="max-w-7xl mx-auto flex justify-between items-center">
-      <h1 class="text-2xl font-bold">डॉ. प्रकाश काकड़</h1>
-      <span class="text-sm sm:text-base">समर्पित युवा नेता | RLP बाड़मेर</span>
-    </div>
-  </nav>
+<body class="font-[Poppins] bg-gray-50 text-gray-800">
 
   <!-- Hero Section -->
-  <section class="text-center py-12 bg-white shadow-inner">
-    <h2 class="text-4xl font-bold text-green-700 mb-4">युवा शक्ति, राष्ट्र निर्माण</h2>
-    <p class="text-lg text-gray-600 mb-6">हनुमान बेनीवाल जी की प्रेरणा से – बाड़मेर की सच्ची आवाज़</p>
-    <img src="assets/images/file-APLGXuDCSyKZns7guYjQPQ.jpg" class="mx-auto w-64 h-64 rounded-full border-4 border-green-500 shadow-lg object-cover fade-in" alt="Prakash Kakad" />
+  <header class="bg-gradient-to-r from-green-700 to-yellow-500 text-white py-16 px-6 text-center shadow-lg">
+    <h1 class="text-4xl sm:text-5xl font-bold mb-4">डॉ. प्रकाश काकड़</h1>
+    <p class="text-xl">युवा नेतृत्व | RLP बाड़मेर | हनुमान जी की प्रेरणा</p>
+    <img src="hero.jpg" class="mx-auto mt-6 w-40 h-40 rounded-full shadow-lg border-4 border-white fade-in" alt="Dr. Prakash Kakad">
+  </header>
+
+  <!-- About Section -->
+  <section class="py-12 px-6 max-w-5xl mx-auto">
+    <h2 class="text-3xl font-semibold text-green-700 mb-4">मेरे बारे में</h2>
+    <p class="leading-relaxed text-lg">मैं <strong>प्रकाश काकड़</strong>, राष्ट्रीय लोकतांत्रिक पार्टी (RLP) से जुड़ा एक समर्पित युवा नेता हूं। मेरा जन्म स्थान पीपली बेरी, बमरला (बाड़मेर) है। बचपन से ही मुझे जनसेवा और नेतृत्व का जुनून रहा है।</p>
+    <p class="mt-3 leading-relaxed text-lg">मैंने शिक्षा, गांव और युवाओं की आवाज को सदैव प्राथमिकता दी है। मैं मानता हूं कि हर नागरिक को उसकी ताकत का अहसास कराना ही एक सच्चे नेता की पहचान है।</p>
   </section>
 
-  <!-- Bio Section -->
-  <section class="max-w-5xl mx-auto py-10 px-4">
-    <h3 class="text-2xl font-bold text-green-800 mb-4">मेरे बारे में</h3>
-    <div class="bg-white p-6 rounded-lg shadow-md leading-relaxed">
-      <p>मैं <strong>प्रकाश काकड़</strong>, राष्ट्रीय लोकतांत्रिक पार्टी (RLP) का समर्पित युवा कार्यकर्ता हूं। मेरा जन्म गाँव पीपली बेरी (बमरला), बाड़मेर में हुआ। बचपन से ही जन सेवा और राष्ट्र के प्रति लगाव रहा है।</p>
-      <p class="mt-3">मैंने 10वीं कक्षा में 88.50% और 12वीं में 90.40% अंक प्राप्त किए हैं। वर्तमान में मैं शिक्षा, युवाओं की आवाज़ और ग्रामीण विकास के लिए कार्यरत हूं।</p>
-    </div>
-  </section>
-
-  <!-- Vision Section -->
-  <section class="bg-yellow-50 py-10 px-4">
-    <div class="max-w-5xl mx-auto text-center">
-      <h3 class="text-2xl font-bold text-green-800 mb-6">मेरा विज़न</h3>
-      <div class="grid sm:grid-cols-2 gap-6">
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <h4 class="text-lg font-semibold text-green-700 mb-2">हर युवा को मंच</h4>
-          <p>हर गाँव और हर युवा को आवाज़ मिले — यही मेरा सपना है।</p>
+  <!-- Vision Cards -->
+  <section class="bg-white py-10 px-6">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-semibold text-center text-green-700 mb-8">मेरा विज़न</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div class="bg-yellow-100 p-6 rounded-xl shadow-md fade-in">
+          <h3 class="text-xl font-bold mb-2 text-green-800">युवाओं को मंच</h3>
+          <p>हर युवा को मौका मिले – यही सपना है।</p>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <h4 class="text-lg font-semibold text-green-700 mb-2">भ्रष्टाचार से संघर्ष</h4>
-          <p>ईमानदार नेतृत्व और पारदर्शी व्यवस्था ही मेरा मूल उद्देश्य है।</p>
+        <div class="bg-yellow-100 p-6 rounded-xl shadow-md fade-in">
+          <h3 class="text-xl font-bold mb-2 text-green-800">शिक्षा की क्रांति</h3>
+          <p>गांव-गांव तक गुणवत्तापूर्ण शिक्षा पहुंचाना।</p>
+        </div>
+        <div class="bg-yellow-100 p-6 rounded-xl shadow-md fade-in">
+          <h3 class="text-xl font-bold mb-2 text-green-800">भ्रष्टाचार का अंत</h3>
+          <p>ईमानदार नेतृत्व की स्थापना करना।</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Gallery Section -->
-  <section class="max-w-6xl mx-auto py-10 px-4">
-    <h3 class="text-2xl font-bold text-green-800 mb-6 text-center">मेरे प्रेरणादायक पल</h3>
+  <!-- Gallery -->
+  <section class="py-12 px-6 max-w-6xl mx-auto">
+    <h2 class="text-3xl font-semibold text-green-700 mb-6 text-center">गैलरी</h2>
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-      <img src="assets/images/file-WmZkj63m1z4MfXJ2Yo1zdT.jpg" class="rounded-lg shadow-md object-cover h-40 w-full" />
-      <img src="assets/images/file-H7hdK5124YH6mZWRRHehTK.jpg" class="rounded-lg shadow-md object-cover h-40 w-full" />
-      <img src="assets/images/file-MaAHuADcx3wPGz5DBfhaWt.jpg" class="rounded-lg shadow-md object-cover h-40 w-full" />
-      <img src="assets/images/file-WSLp2fFgfnMo8WMaRvYmHx.jpg" class="rounded-lg shadow-md object-cover h-40 w-full" />
-      <img src="assets/images/file-APLGXuDCSyKZns7guYjQPQ.jpg" class="rounded-lg shadow-md object-cover h-40 w-full" />
+      <img src="gallery1.jpg" class="rounded-xl shadow-md object-cover w-full h-40 fade-in" alt="Gallery Image">
+      <img src="gallery2.jpg" class="rounded-xl shadow-md object-cover w-full h-40 fade-in" alt="Gallery Image">
+      <img src="gallery3.jpg" class="rounded-xl shadow-md object-cover w-full h-40 fade-in" alt="Gallery Image">
+      <img src="gallery4.jpg" class="rounded-xl shadow-md object-cover w-full h-40 fade-in" alt="Gallery Image">
+      <img src="hero.jpg" class="rounded-xl shadow-md object-cover w-full h-40 fade-in" alt="Gallery Image">
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-green-700 text-white text-center p-4 mt-6">
-    <p>© 2025 Dr. Prakash Kakad | Powered by RLP Barmer</p>
+  <footer class="bg-green-700 text-white text-center py-4">
+    <p>© 2025 डॉ. प्रकाश काकड़ | All Rights Reserved | Powered by RLP Barmer</p>
   </footer>
+
 </body>
 </html>
