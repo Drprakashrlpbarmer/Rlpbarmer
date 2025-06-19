@@ -3,26 +3,43 @@
 <html lang="hi">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>डॉ. प्रकाश काकड़ | RLP बाड़मेर</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
+      margin: 0;
       font-family: 'Poppins', sans-serif;
       background: #f7fafc;
-      margin: 0;
-      padding: 0;
       color: #2d3748;
     }
     header {
+      position: relative;
       background: linear-gradient(to right, #2f855a, #ecc94b);
       color: white;
-      padding: 40px 20px;
       text-align: center;
+      padding: 60px 20px;
+      overflow: hidden;
+    }
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+    canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .content {
+      position: relative;
+      z-index: 2;
     }
     .form {
       max-width: 600px;
-      margin: 20px auto;
+      margin: 30px auto;
       background: white;
       padding: 20px;
       border-radius: 10px;
@@ -56,8 +73,12 @@
 <body>
 
 <header>
-  <h1>डॉ. प्रकाश काकड़</h1>
-  <p>युवा नेता | RLP बाड़मेर | जय बजरंग बली 🚩</p>
+  <div class="overlay"><canvas id="fireworks"></canvas></div>
+  <div class="content">
+    <h1>डॉ. प्रकाश काकड़</h1>
+    <p>युवा नेता | RLP बाड़मेर</p>
+    <strong>🚩 राजधानी की सड़कों पर सुनामी आ गई... - हनुमान बेनीवाल 🚩</strong>
+  </div>
 </header>
 
 <div class="form">
@@ -71,6 +92,58 @@
 </div>
 
 <iframe src="https://www.youtube.com/embed/lWavhY0gUzk" allowfullscreen></iframe>
+
+<script>
+  const canvas = document.getElementById('fireworks');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = 200;
+
+  function random(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  const particles = [];
+
+  function createFirework() {
+    const x = random(100, canvas.width - 100);
+    const y = random(50, 150);
+    const count = 40;
+    for (let i = 0; i < count; i++) {
+      particles.push({
+        x: x,
+        y: y,
+        radius: 2,
+        angle: (Math.PI * 2 * i) / count,
+        speed: random(1, 4),
+        alpha: 1,
+        color: `hsl(${random(0, 360)}, 100%, 60%)`
+      });
+    }
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach((p, i) => {
+      const vx = Math.cos(p.angle) * p.speed;
+      const vy = Math.sin(p.angle) * p.speed;
+      p.x += vx;
+      p.y += vy;
+      p.alpha -= 0.01;
+      if (p.alpha <= 0) particles.splice(i, 1);
+
+      ctx.beginPath();
+      ctx.globalAlpha = p.alpha;
+      ctx.fillStyle = p.color;
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fill();
+    });
+    requestAnimationFrame(animate);
+  }
+
+  setInterval(createFirework, 1500);
+  animate();
+</script>
 
 </body>
 </html>
