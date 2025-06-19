@@ -2,61 +2,74 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dr. Prakash Kakad | RLP Barmer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
-    body { background: #f5f7fa; color: #222; }
-    header { background: linear-gradient(to right, #008542, #ffe600); color: white; padding: 2rem; text-align: center; }
-    header h1 { font-size: 2.5rem; }
-    header p { margin-top: 0.5rem; font-size: 1.2rem; }
-    section { padding: 2rem; max-width: 900px; margin: auto; }
-    h2 { color: #008542; margin-bottom: 1rem; }
-    .bio, .vision, .ideology, .contact { background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-bottom: 2rem; }
-    .photo-grid { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
-    .photo-grid img { width: 180px; border-radius: 10px; object-fit: cover; }
-    footer { text-align: center; padding: 1rem; background: #008542; color: white; }
+    .fade-in { animation: fadeIn 1s ease-in-out forwards; opacity: 0; }
+    @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
   </style>
 </head>
-<body>
-  <header>
-    <h1>डॉ. प्रकाश काकड़</h1>
-    <p>युवा शक्ति, राष्ट्र निर्माण | समर्थक: हनुमान बेनीवाल जी</p>
-  </header>
+<body class="bg-gray-100 text-gray-900 font-[Montserrat]">
 
-  <section class="bio">
-    <h2>परिचय</h2>
-    <p>मैं प्रकाश काकड़, राष्ट्रीय लोकतांत्रिक पार्टी (RLP) का एक समर्पित युवा कार्यकर्ता हूं। मेरा जन्म गाँव पीपली बेरी (बमरला), जिला बाड़मेर, राजस्थान में हुआ। मैंने शिक्षा के क्षेत्र में उत्कृष्ट प्रदर्शन किया (10वीं: 88.50%, 12वीं: 90.40%) और अब जनसेवा के मार्ग पर अग्रसर हूं।</p>
+  <!-- Navbar -->
+  <nav class="bg-gradient-to-r from-green-700 to-yellow-500 text-white p-4 shadow-lg">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold">डॉ. प्रकाश काकड़</h1>
+      <span class="text-sm sm:text-base">समर्पित युवा नेता | RLP बाड़मेर</span>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="text-center py-12 bg-white shadow-inner">
+    <h2 class="text-4xl font-bold text-green-700 mb-4">युवा शक्ति, राष्ट्र निर्माण</h2>
+    <p class="text-lg text-gray-600 mb-6">हनुमान बेनीवाल जी की प्रेरणा से – बाड़मेर की सच्ची आवाज़</p>
+    <img src="assets/images/file-APLGXuDCSyKZns7guYjQPQ.jpg" class="mx-auto w-64 h-64 rounded-full border-4 border-green-500 shadow-lg object-cover fade-in" alt="Prakash Kakad" />
   </section>
 
-  <section class="vision">
-    <h2>मेरा विज़न</h2>
-    <p>मैं राजनीति को एक सेवा मानता हूं। मेरा उद्देश्य है कि हर ग्रामीण युवा को एक मंच मिले जहाँ से वे अपनी बात सरकार तक पहुँचा सकें। मैं युवाओं की आवाज़ को आगे लाने और भ्रष्टाचार के खिलाफ लड़ने के लिए राजनीति में आया हूं।</p>
+  <!-- Bio Section -->
+  <section class="max-w-5xl mx-auto py-10 px-4">
+    <h3 class="text-2xl font-bold text-green-800 mb-4">मेरे बारे में</h3>
+    <div class="bg-white p-6 rounded-lg shadow-md leading-relaxed">
+      <p>मैं <strong>प्रकाश काकड़</strong>, राष्ट्रीय लोकतांत्रिक पार्टी (RLP) का समर्पित युवा कार्यकर्ता हूं। मेरा जन्म गाँव पीपली बेरी (बमरला), बाड़मेर में हुआ। बचपन से ही जन सेवा और राष्ट्र के प्रति लगाव रहा है।</p>
+      <p class="mt-3">मैंने 10वीं कक्षा में 88.50% और 12वीं में 90.40% अंक प्राप्त किए हैं। वर्तमान में मैं शिक्षा, युवाओं की आवाज़ और ग्रामीण विकास के लिए कार्यरत हूं।</p>
+    </div>
   </section>
 
-  <section class="ideology">
-    <h2>RLP विचारधारा</h2>
-    <p>हनुमान बेनीवाल जी के नेतृत्व में RLP एक राष्ट्रवादी, किसान-मजदूर और युवा हितैषी विचारधारा की पार्टी है। मैं इन्हीं मूल्यों को आगे बढ़ा रहा हूं - जनसेवा, पारदर्शिता और निर्भीक नेतृत्व।</p>
+  <!-- Vision Section -->
+  <section class="bg-yellow-50 py-10 px-4">
+    <div class="max-w-5xl mx-auto text-center">
+      <h3 class="text-2xl font-bold text-green-800 mb-6">मेरा विज़न</h3>
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h4 class="text-lg font-semibold text-green-700 mb-2">हर युवा को मंच</h4>
+          <p>हर गाँव और हर युवा को आवाज़ मिले — यही मेरा सपना है।</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h4 class="text-lg font-semibold text-green-700 mb-2">भ्रष्टाचार से संघर्ष</h4>
+          <p>ईमानदार नेतृत्व और पारदर्शी व्यवस्था ही मेरा मूल उद्देश्य है।</p>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section class="photo-grid">
-    <img src="images/profile1.jpg" alt="Prakash 1">
-    <img src="images/profile2.jpg" alt="Prakash 2">
-    <img src="images/profile3.jpg" alt="Prakash 3">
-    <img src="images/hanuman-beniwal.jpg" alt="Hanuman Beniwal">
-    <img src="images/traditional.jpg" alt="Rajputi Look">
+  <!-- Gallery Section -->
+  <section class="max-w-6xl mx-auto py-10 px-4">
+    <h3 class="text-2xl font-bold text-green-800 mb-6 text-center">मेरे प्रेरणादायक पल</h3>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+      <img src="assets/images/file-WmZkj63m1z4MfXJ2Yo1zdT.jpg" class="rounded-lg shadow-md object-cover h-40 w-full" />
+      <img src="assets/images/file-H7hdK5124YH6mZWRRHehTK.jpg" class="rounded-lg shadow-md object-cover h-40 w-full" />
+      <img src="assets/images/file-MaAHuADcx3wPGz5DBfhaWt.jpg" class="rounded-lg shadow-md object-cover h-40 w-full" />
+      <img src="assets/images/file-WSLp2fFgfnMo8WMaRvYmHx.jpg" class="rounded-lg shadow-md object-cover h-40 w-full" />
+      <img src="assets/images/file-APLGXuDCSyKZns7guYjQPQ.jpg" class="rounded-lg shadow-md object-cover h-40 w-full" />
+    </div>
   </section>
 
-  <section class="contact">
-    <h2>संपर्क करें</h2>
-    <p>Instagram: <a href="https://instagram.com/pc_bmr_12" target="_blank">@pc_bmr_12</a></p>
-    <p>YouTube: <a href="https://youtube.com/@lovelyshoart?si=Z6VkqrC9ny7BIooH" target="_blank">Lovely Shoart</a></p>
-  </section>
-
-  <footer>
-    <p>© 2025 Dr. Prakash Kakad | RLP Barmer</p>
+  <!-- Footer -->
+  <footer class="bg-green-700 text-white text-center p-4 mt-6">
+    <p>© 2025 Dr. Prakash Kakad | Powered by RLP Barmer</p>
   </footer>
 </body>
 </html>
