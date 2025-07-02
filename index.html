@@ -3,1870 +3,1501 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>राष्ट्रीय लोकतांत्रिक पार्टी | RLP</title>
+    <title>राष्ट्रीय लोकतांत्रिक पार्टी (RLP) | डॉ. प्रकाश काकड़, बाड़मेर</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
     <style>
-        :root {
-            --primary: #FF6B00;
-            --secondary: #2E8B57;
-            --accent: #1E90FF;
-            --dark: #2C3E50;
-            --light: #F8F9FA;
-            --saffron: #FF9933;
-            --text: #333333;
-            --party-blue: #1a5fb4;
-            --party-green: #26a269;
-            --success: #27ae60;
-            --error: #e74c3c;
-            --warning: #f39c12;
-            --info: #3498db;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
         
         body {
-            font-family: 'Hind', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa, #e4e7eb);
-            color: var(--text);
-            overflow-x: hidden;
-            min-height: 100vh;
-            position: relative;
+            font-family: 'Hind Siliguri', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #f8fafc;
         }
         
-        /* Door Animation Styles */
-        .door-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            z-index: 1000;
-            background: var(--dark);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            perspective: 2000px;
+        .hindi-font {
+            font-family: 'Hind Siliguri', sans-serif;
         }
         
-        .door {
-            position: relative;
-            width: 300px;
-            height: 500px;
-            transform-style: preserve-3d;
+        .news-ticker {
+            animation: ticker 30s linear infinite;
         }
         
-        .left-door, .right-door {
-            position: absolute;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(45deg, var(--primary), var(--saffron));
-            border: 5px solid var(--dark);
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
-            transition: transform 1.5s ease-in-out;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 4rem;
-            color: white;
-            overflow: hidden;
+        @keyframes ticker {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
         }
         
-        .left-door {
-            left: 0;
-            transform-origin: left center;
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://i.postimg.cc/3NSLrXxY/48294c9415e7676cd649c83156c0f3e91719494523702304-original.jpg');
+            background-size: cover;
+            background-position: center;
         }
         
-        .right-door {
-            right: 0;
-            transform-origin: right center;
+        .leader-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
         
-        .door-logo {
-            width: 80%;
-            animation: pulse 2s infinite;
+        .gallery-item {
+            transition: all 0.3s ease;
         }
         
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        /* Main Content */
-        .main-content {
-            display: none;
-            opacity: 0;
-            transition: opacity 1s ease;
-        }
-        
-        /* Header Styles */
-        header {
-            background: linear-gradient(to right, var(--primary), var(--saffron));
-            color: white;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-            position: relative;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-        
-        .logo:hover {
+        .gallery-item:hover {
             transform: scale(1.03);
         }
         
-        .logo-img {
-            width: 60px;
-            height: 60px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.8rem;
-            color: var(--primary);
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-        
-        .logo-text {
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-        
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-        
-        .nav-menu li a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 30px;
+        .nav-link {
             position: relative;
         }
         
-        .nav-menu li a:after {
+        .nav-link::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 50%;
             width: 0;
             height: 2px;
-            background: white;
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
+            bottom: 0;
+            left: 0;
+            background-color: #e53e3e;
+            transition: width 0.3s ease;
         }
         
-        .nav-menu li a:hover:after {
-            width: 80%;
-        }
-        
-        .mobile-toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            background: rgba(255,255,255,0.2);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        /* Search Bar */
-        .search-container {
-            display: flex;
-            align-items: center;
-            background: rgba(255,255,255,0.2);
-            border-radius: 30px;
-            padding: 0.3rem 1rem;
-            margin-left: 1rem;
-            transition: all 0.3s ease;
-        }
-        
-        .search-container:focus-within {
-            background: rgba(255,255,255,0.3);
-        }
-        
-        .search-container input {
-            background: transparent;
-            border: none;
-            color: white;
-            padding: 0.5rem;
-            width: 180px;
-            outline: none;
-            font-family: inherit;
-            font-size: 1rem;
-        }
-        
-        .search-container input::placeholder {
-            color: rgba(255,255,255,0.7);
-        }
-        
-        .search-container button {
-            background: transparent;
-            border: none;
-            color: white;
-            cursor: pointer;
-            font-size: 1.1rem;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1580136605362-0c4cb6e34c8f?ixlib=rb-4.0.3') no-repeat center center/cover;
-            height: 80vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-content {
-            max-width: 800px;
-            padding: 0 2rem;
-            z-index: 2;
-        }
-        
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-            animation: fadeInUp 1s ease;
-        }
-        
-        .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            font-weight: 400;
-            animation: fadeInUp 1s ease 0.3s forwards;
-            opacity: 0;
-        }
-        
-        .hero-btn {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 1rem 2.5rem;
-            font-size: 1.2rem;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            animation: fadeInUp 1s ease 0.6s forwards;
-            opacity: 0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-btn:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
+        .nav-link:hover::after {
             width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: all 0.6s ease;
         }
         
-        .hero-btn:hover:before {
-            left: 100%;
-        }
-        
-        .hero-btn:hover {
-            background: var(--saffron);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-        }
-        
-        /* Section Common Styles */
-        .section {
-            padding: 5rem 2rem;
+        .active-nav::after {
+            width: 100%;
         }
         
         .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--dark);
             position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
         }
         
         .section-title:after {
             content: '';
             position: absolute;
-            bottom: -15px;
+            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
             width: 80px;
             height: 4px;
-            background: var(--primary);
+            background: #e53e3e;
+            border-radius: 2px;
         }
         
-        /* Leaders Section */
-        .leaders-section {
-            background: var(--light);
-        }
-        
-        .leaders-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .leader-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-        }
-        
-        .leader-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        }
-        
-        .leader-img {
-            height: 300px;
-            width: 100%;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-        
-        .leader-img:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 50%;
-            background: linear-gradient(transparent, rgba(0,0,0,0.7));
-        }
-        
-        .leader-info {
-            padding: 1.5rem;
-        }
-        
-        .leader-name {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--dark);
-        }
-        
-        .leader-position {
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        
-        .leader-desc {
-            color: var(--text);
-            line-height: 1.6;
-        }
-        
-        /* Products Section */
-        .products-section {
-            background: linear-gradient(to right, #f8f9fa, #e9ecef);
-        }
-        
-        .products-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-        
-        .product-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        }
-        
-        .product-img {
-            height: 200px;
-            background: linear-gradient(45deg, var(--party-blue), var(--party-green));
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 3rem;
-            color: white;
-        }
-        
-        .product-info {
-            padding: 1.5rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .product-title {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: var(--dark);
-        }
-        
-        .product-desc {
-            color: var(--text);
-            margin-bottom: 1rem;
-            flex-grow: 1;
-        }
-        
-        .product-link {
-            display: inline-block;
-            background: var(--secondary);
-            color: white;
-            padding: 0.5rem 1.5rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            align-self: flex-start;
-        }
-        
-        .product-link:hover {
-            background: var(--accent);
-            transform: translateY(-3px);
-        }
-        
-        /* Gallery Section */
-        .gallery-section {
-            background: var(--light);
-        }
-        
-        .gallery-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .gallery-item {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            height: 250px;
-            position: relative;
-            cursor: pointer;
-        }
-        
-        .gallery-item:hover {
-            transform: translateY(-5px);
-        }
-        
-        .gallery-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .gallery-item:hover .gallery-img {
-            transform: scale(1.05);
-        }
-        
-        .gallery-title {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 1rem;
-            background: rgba(0,0,0,0.7);
-            color: white;
-            font-size: 1.1rem;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-        }
-        
-        .gallery-item:hover .gallery-title {
-            transform: translateY(0);
-        }
-        
-        /* Video Section */
-        .video-section {
-            background: linear-gradient(to right, #f8f9fa, #e9ecef);
-        }
-        
-        .video-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-        
-        .video-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        .video-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        }
-        
-        .video-card iframe {
-            width: 100%;
-            height: 250px;
-            border: none;
-            border-radius: 15px 15px 0 0;
-        }
-        
-        .video-info {
-            padding: 1.5rem;
-        }
-        
-        .video-title {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: var(--dark);
-        }
-        
-        /* News Section */
-        .news-section {
-            background: var(--light);
-        }
-        
-        .news-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .news-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .news-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        }
-        
-        .news-img {
-            height: 200px;
-            width: 100%;
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .news-info {
-            padding: 1.5rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .news-title {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: var(--dark);
-        }
-        
-        .news-desc {
-            color: var(--text);
-            line-height: 1.6;
-            margin-bottom: 1rem;
-            flex-grow: 1;
-        }
-        
-        .news-date {
-            color: #777;
-            font-size: 0.9rem;
-            text-align: right;
-        }
-        
-        /* Membership Section */
-        .membership-section {
-            background: linear-gradient(to right, var(--secondary), var(--accent));
-            color: white;
-            text-align: center;
-        }
-        
-        .membership-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .membership-title {
-            color: white;
-        }
-        
-        .membership-title:after {
-            background: white;
-        }
-        
-        .membership-desc {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-        
-        .membership-form {
-            background: rgba(255,255,255,0.1);
-            padding: 2rem;
-            border-radius: 15px;
-            max-width: 500px;
-            margin: 0 auto;
-            backdrop-filter: blur(10px);
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-            text-align: left;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        
-        .form-group input {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            background: rgba(255,255,255,0.9);
-            transition: all 0.3s ease;
-        }
-        
-        .form-group input:focus {
-            outline: 2px solid var(--primary);
-            box-shadow: 0 0 10px rgba(255,107,0,0.3);
-        }
-        
-        .register-btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 1rem 2.5rem;
-            font-size: 1.1rem;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .register-btn:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: all 0.6s ease;
-        }
-        
-        .register-btn:hover:before {
-            left: 100%;
-        }
-        
-        .register-btn:hover {
-            background: var(--saffron);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        
-        .message {
-            margin-top: 1.5rem;
-            padding: 1rem;
-            border-radius: 8px;
+        /* RLP Explorer Styles */
+        #explorer-modal {
             display: none;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        .success {
-            background: rgba(46, 204, 113, 0.2);
-            border: 1px solid #2ecc71;
-            color: #27ae60;
-        }
-        
-        .error {
-            background: rgba(231, 76, 60, 0.2);
-            border: 1px solid #e74c3c;
-            color: #c0392b;
-        }
-        
-        /* Membership Card */
-        .membership-card-container {
-            display: none;
-            margin-top: 2rem;
-            background: rgba(255,255,255,0.2);
-            padding: 2rem;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            animation: fadeIn 0.8s ease;
-        }
-        
-        .membership-card {
-            background: linear-gradient(135deg, var(--primary), var(--saffron));
-            border-radius: 15px;
-            padding: 2rem;
-            color: white;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            max-width: 400px;
-            margin: 0 auto;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .membership-card:before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            transform: rotate(30deg);
-        }
-        
-        .card-logo {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .card-title {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .member-name {
-            font-size: 1.5rem;
-            margin: 1rem 0;
-            padding: 0.5rem;
-            background: rgba(255,255,255,0.2);
-            border-radius: 8px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .member-id {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .download-btn {
-            background: white;
-            color: var(--primary);
-            border: none;
-            padding: 0.8rem 1.5rem;
-            font-size: 1rem;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .download-btn:hover {
-            background: #f1f1f1;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        /* Comment Section */
-        .comment-section {
-            background: var(--light);
-        }
-        
-        .comment-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-        }
-        
-        .comment-form .form-group textarea {
-            width: 100%;
-            height: 150px;
-            padding: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-family: inherit;
-            resize: vertical;
-            transition: all 0.3s ease;
-        }
-        
-        .comment-form .form-group textarea:focus {
-            outline: 2px solid var(--primary);
-            box-shadow: 0 0 10px rgba(255,107,0,0.3);
-        }
-        
-        .submit-btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 0.8rem 2rem;
-            font-size: 1rem;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .submit-btn:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: all 0.6s ease;
-        }
-        
-        .submit-btn:hover:before {
-            left: 100%;
-        }
-        
-        .submit-btn:hover {
-            background: var(--saffron);
-        }
-        
-        .comments-list {
-            margin-top: 3rem;
-        }
-        
-        .comment {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin-bottom: 1.5rem;
-            position: relative;
-            animation: fadeIn 0.5s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .comment:after {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: 30px;
-            width: 20px;
-            height: 20px;
-            background: #f8f9fa;
-            transform: rotate(45deg);
-        }
-        
-        .comment-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-        
-        .comment-avatar {
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-weight: bold;
-            margin-right: 1rem;
-        }
-        
-        .comment-author {
-            font-weight: 600;
-            color: var(--dark);
-        }
-        
-        .comment-date {
-            color: #777;
-            font-size: 0.9rem;
-            margin-left: auto;
-        }
-        
-        .comment-content {
-            line-height: 1.6;
-        }
-        
-        /* Contact Section */
-        .contact-section {
-            background: linear-gradient(to right, var(--dark), #1a2530);
-            color: white;
-        }
-        
-        .contact-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-        }
-        
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-        }
-        
-        .contact-icon {
-            font-size: 1.5rem;
-            color: var(--primary);
-        }
-        
-        .contact-details h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .contact-details p {
-            color: #ddd;
-            line-height: 1.6;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        
-        .social-link {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            color: white;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-        }
-        
-        .social-link:hover {
-            background: var(--primary);
-            transform: translateY(-5px);
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 3rem 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        footer:before {
-            content: '';
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://images.unsplash.com/photo-1580136605362-0c4cb6e34c8f?ixlib=rb-4.0.3') center/cover;
-            opacity: 0.05;
-            z-index: 0;
+            background-color: rgba(0,0,0,0.9);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 20px;
+            box-sizing: border-box;
         }
         
-        .footer-content {
+        .explorer-content {
+            background-color: white;
+            border-radius: 10px;
+            max-width: 1000px;
+            margin: 40px auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .explorer-header {
+            background: linear-gradient(to right, #2c974b, #1e5a2c);
+            color: white;
+            padding: 20px;
+            text-align: center;
             position: relative;
-            z-index: 1;
         }
         
-        .footer-logo {
-            font-size: 2rem;
+        .explorer-header h2 {
+            font-size: 28px;
+            margin: 0;
             font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--primary);
         }
         
-        .footer-links {
+        .close-explorer {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .explorer-tabs {
             display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin: 2rem 0;
+            background-color: #f0f0f0;
+            border-bottom: 1px solid #ddd;
             flex-wrap: wrap;
         }
         
-        .footer-links a {
-            color: #ddd;
-            text-decoration: none;
-            transition: all 0.3s ease;
+        .explorer-tab {
+            padding: 15px 25px;
+            cursor: pointer;
+            font-weight: 600;
+            border-right: 1px solid #ddd;
+            min-width: 120px;
+            text-align: center;
+        }
+        
+        .explorer-tab.active {
+            background-color: white;
+            border-bottom: 3px solid #2c974b;
+        }
+        
+        .explorer-body {
+            padding: 30px;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        
+        .explorer-section {
+            display: none;
+        }
+        
+        .explorer-section.active {
+            display: block;
+        }
+        
+        .explorer-section h3 {
+            color: #1e5a2c;
+            border-bottom: 2px solid #2c974b;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        
+        .info-card {
+            background-color: #f9f9f9;
+            border-left: 4px solid #2c974b;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .election-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .election-table th {
+            background-color: #2c974b;
+            color: white;
+            text-align: left;
+            padding: 12px;
+        }
+        
+        .election-table td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .election-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 20px;
+            width: 4px;
+            background-color: #2c974b;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-left: 50px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 16px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #2c974b;
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px #2c974b;
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: #2c974b;
+        }
+        
+        .reference-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .reference-list li {
+            margin-bottom: 10px;
+            padding-left: 20px;
             position: relative;
         }
         
-        .footer-links a:after {
-            content: '';
+        .reference-list li::before {
+            content: '[' attr(data-ref) ']';
             position: absolute;
-            bottom: -5px;
             left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s ease;
+            color: #2c974b;
+            font-weight: bold;
         }
         
-        .footer-links a:hover {
-            color: var(--primary);
-        }
-        
-        .footer-links a:hover:after {
-            width: 100%;
-        }
-        
-        .copyright {
-            color: #aaa;
-            margin-top: 2rem;
-            font-size: 0.9rem;
-        }
-        
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .hero-title {
-                font-size: 3rem;
-            }
-            
-            .section-title {
-                font-size: 2.2rem;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .header-container {
-                padding: 0 1rem;
-                flex-wrap: wrap;
-            }
-            
-            .logo {
-                margin-right: auto;
-            }
-            
-            .search-container {
-                order: 3;
-                width: 100%;
-                margin: 0.5rem 0 0;
-            }
-            
-            .nav-menu {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                background: white;
-                width: 100%;
-                flex-direction: column;
-                align-items: center;
-                padding: 2rem 0;
-                gap: 1.5rem;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-                transition: all 0.4s ease;
-                z-index: 100;
-            }
-            
-            .nav-menu.active {
-                left: 0;
-            }
-            
-            .nav-menu li a {
-                color: var(--dark);
-            }
-            
-            .mobile-toggle {
-                display: flex;
-            }
-            
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .section {
-                padding: 3rem 1.5rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-        
-        /* Real-time sync indicator */
-        .sync-indicator {
+        /* Admin Panel Styles */
+        #admin-modal {
+            display: none;
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--party-green);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 1001;
+            overflow-y: auto;
+        }
+        
+        .admin-content {
+            background-color: white;
+            border-radius: 10px;
+            max-width: 800px;
+            margin: 40px auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .admin-header {
+            background: linear-gradient(to right, #e53e3e, #c53030);
             color: white;
-            padding: 10px 15px;
-            border-radius: 30px;
-            font-size: 0.9rem;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .admin-tabs {
+            display: flex;
+            background-color: #f0f0f0;
+            border-bottom: 1px solid #ddd;
+            flex-wrap: wrap;
+        }
+        
+        .admin-tab {
+            padding: 15px 25px;
+            cursor: pointer;
+            font-weight: 600;
+            border-right: 1px solid #ddd;
+            min-width: 120px;
+            text-align: center;
+        }
+        
+        .admin-tab.active {
+            background-color: white;
+            border-bottom: 3px solid #e53e3e;
+        }
+        
+        .admin-body {
+            padding: 30px;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        
+        .admin-section {
+            display: none;
+        }
+        
+        .admin-section.active {
+            display: block;
+        }
+        
+        .admin-section h3 {
+            color: #c53030;
+            border-bottom: 2px solid #e53e3e;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        
+        .admin-form {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+        
+        .admin-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .admin-form input, 
+        .admin-form textarea, 
+        .admin-form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .admin-form button {
+            background-color: #e53e3e;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .admin-form button:hover {
+            background-color: #c53030;
+        }
+        
+        .content-list {
+            margin-top: 20px;
+        }
+        
+        .content-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .content-item:last-child {
+            border-bottom: none;
+        }
+        
+        .content-actions button {
+            background: none;
+            border: none;
+            color: #e53e3e;
+            cursor: pointer;
+            margin-left: 10px;
+            font-size: 16px;
+        }
+        
+        .back-button {
+            background: none;
+            border: none;
+            color: #555;
+            cursor: pointer;
+            font-size: 14px;
             display: flex;
             align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            z-index: 100;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.3s ease;
+            margin-bottom: 15px;
         }
         
-        .sync-indicator.show {
-            opacity: 1;
-            transform: translateY(0);
+        .back-button i {
+            margin-right: 5px;
         }
         
-        .sync-indicator .fa-sync {
-            animation: spin 2s linear infinite;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .hidden-content {
+            display: none;
         }
     </style>
 </head>
-<body>
-    <!-- Door Opening Animation -->
-    <div class="door-container">
-        <div class="door">
-            <div class="left-door">
-                <div class="door-logo">
-                    <i class="fas fa-landmark"></i>
+<body class="bg-gray-50">
+    <!-- Header Section -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://i.postimg.cc/3wkRsgyr/1000006651.jpg" alt="RLP Logo" class="h-12 w-12 rounded-full">
+                <div class="ml-3">
+                    <h1 class="text-xl font-bold text-red-600 hindi-font">राष्ट्रीय लोकतांत्रिक पार्टी (RLP)</h1>
+                    <p class="text-xs text-gray-600 hindi-font">डॉ. प्रकाश काकड़, बाड़मेर</p>
                 </div>
             </div>
-            <div class="right-door">
-                <div class="door-logo">
-                    <i class="fas fa-people-carry"></i>
+            
+            <div class="hidden md:flex space-x-6">
+                <a href="#home" class="nav-link active-nav text-red-600 font-medium hindi-font">होम</a>
+                <a href="#about" class="nav-link text-gray-700 hover:text-red-600 font-medium hindi-font">पार्टी के बारे में</a>
+                <a href="#leaders" class="nav-link text-gray-700 hover:text-red-600 font-medium hindi-font">नेता</a>
+                <a href="#gallery" class="nav-link text-gray-700 hover:text-red-600 font-medium hindi-font">गैलरी</a>
+                <a href="#news" class="nav-link text-gray-700 hover:text-red-600 font-medium hindi-font">समाचार</a>
+                <a href="#contact" class="nav-link text-gray-700 hover:text-red-600 font-medium hindi-font">संपर्क</a>
+                <button id="explorerBtn" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full transition duration-300 hindi-font">एक्सप्लोरर आरएलपी</button>
+            </div>
+            
+            <button id="mobile-menu-button" class="md:hidden text-gray-700">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white py-2 px-4 shadow-lg">
+            <a href="#home" class="block py-2 text-red-600 font-medium hindi-font">होम</a>
+            <a href="#about" class="block py-2 text-gray-700 hover:text-red-600 font-medium hindi-font">पार्टी के बारे में</a>
+            <a href="#leaders" class="block py-2 text-gray-700 hover:text-red-600 font-medium hindi-font">नेता</a>
+            <a href="#gallery" class="block py-2 text-gray-700 hover:text-red-600 font-medium hindi-font">गैलरी</a>
+            <a href="#news" class="block py-2 text-gray-700 hover:text-red-600 font-medium hindi-font">समाचार</a>
+            <a href="#contact" class="block py-2 text-gray-700 hover:text-red-600 font-medium hindi-font">संपर्क</a>
+            <a href="#join" class="block py-2 bg-red-600 text-white rounded-md text-center hindi-font">हमसे जुड़ें</a>
+            <button id="mobileExplorerBtn" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md transition duration-300 hindi-font mt-2">एक्सप्लोरर आरएलपी</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 hindi-font">जनता की आवाज, जनता की ताकत</h1>
+            <p class="text-xl mb-8 max-w-2xl mx-auto hindi-font">राष्ट्रीय लोकतांत्रिक पार्टी - राजस्थान के किसानों, मजदूरों और युवाओं के हक की लड़ाई</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#join" class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-full transition duration-300 hindi-font">हमसे जुड़ें</a>
+                <a href="#about" class="bg-white hover:bg-gray-100 text-red-600 font-bold py-3 px-6 rounded-full transition duration-300 hindi-font">और जानें</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Ticker -->
+    <div class="bg-red-600 text-white py-2 overflow-hidden">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center">
+                <span class="font-bold mr-4 hindi-font">ताजा समाचार:</span>
+                <div class="flex-1 overflow-hidden">
+                    <div class="news-ticker whitespace-nowrap">
+                        <span class="mr-8 hindi-font">राकेश बिश्नोई हत्याकांड में न्याय की दिशा में बड़ा कदम</span>
+                        <span class="mr-8 hindi-font">निर्मल चौधरी की गिरफ्तारी</span>
+                        <span class="mr-8 hindi-font">RLP ने स्पष्ट किया कि निर्मल चौधरी का पार्टी से कोई संबंध नहीं</span>
+                        <span class="mr-8 hindi-font">राकेश बिश्नोई के परिजनों और प्रशासन में बनी सहमति, धरना समाप्त</span>
+                        <span class="mr-8 hindi-font">हनुमान बेनीवाल ने जाट आरक्षण पर बैठक की</span>
+                        <span class="mr-8 hindi-font">डॉ. प्रकाश काकड़ ने बाड़मेर में युवा सम्मेलन को संबोधित किया</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    
-    <!-- Real-time sync indicator -->
-    <div class="sync-indicator" id="sync-indicator">
-        <i class="fas fa-sync"></i> <span>डेटा सिंक हो रहा है...</span>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 section-title hindi-font">राष्ट्रीय लोकतांत्रिक पार्टी के बारे में</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-red-600 hindi-font">RLP क्या है?</h3>
+                    <p class="text-gray-700 mb-6 hindi-font">
+                        राष्ट्रीय लोकतांत्रिक पार्टी (RLP) राजस्थान की एक प्रमुख राजनीतिक पार्टी है जो किसानों, मजदूरों, युवाओं और समाज के सभी वर्गों के हक की लड़ाई लड़ती है। पार्टी की स्थापना हनुमान बेनीवाल जी ने की थी और यह जनता के सच्चे प्रतिनिधि के रूप में काम करती है।
+                    </p>
+                    <h3 class="text-2xl font-bold mb-4 text-red-600 hindi-font">हनुमान बेनीवाल जी</h3>
+                    <p class="text-gray-700 mb-6 hindi-font">
+                        हनुमान बेनीवाल जी राजस्थान के एक प्रमुख किसान नेता और राष्ट्रीय लोकतांत्रिक पार्टी के संस्थापक हैं। उन्होंने किसानों के हक के लिए कई आंदोलनों का नेतृत्व किया है और राजस्थान की राजनीति में एक नई ऊर्जा का संचार किया है। उनका साफ-सुथरी छवि और जनता से सीधा संवाद उन्हें एक विशिष्ट नेता बनाता है।
+                    </p>
+                    <h3 class="text-2xl font-bold mb-4 text-red-600 hindi-font">पार्टी की विचारधारा</h3>
+                    <p class="text-gray-700 hindi-font">
+                        RLP की विचारधारा जनता के हक की लड़ाई, सामाजिक न्याय, किसानों के हितों की रक्षा, युवाओं के लिए रोजगार के अवसर और महिला सशक्तिकरण पर केंद्रित है। पार्टी भ्रष्टाचार मुक्त शासन और पारदर्शी प्रशासन की पक्षधर है।
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="https://i.postimg.cc/P5BR8Qzq/Hanuman-Beniwal-news-2025-05-f5977541e4b03f70223be809b321043a.jpg" alt="Hanuman Beniwal" class="rounded-lg shadow-md h-64 w-full object-cover">
+                    <img src="https://i.postimg.cc/xCdMfWJN/hanuman-beniwal-1538292262.jpg" alt="Hanuman Beniwal Speech" class="rounded-lg shadow-md h-64 w-full object-cover">
+                    <img src="https://i.postimg.cc/8zVKbBnX/Hanuman-Beniwal-MLA.jpg" alt="Hanuman Beniwal MLA" class="rounded-lg shadow-md h-64 w-full object-cover">
+                    <img src="https://i.postimg.cc/76B1Sx8N/images-12.jpg" alt="RLP Rally" class="rounded-lg shadow-md h-64 w-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 section-title hindi-font">हमारे वीडियो</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="video-container">
+                <!-- Video 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="relative pt-[56.25%]">
+                        <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/tHQVtB101qo" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-2 hindi-font">सभा में हुंकार</h3>
+                        <p class="text-gray-600 hindi-font">हनुमान बेनीवाल की शानदार जनसभा</p>
+                    </div>
+                </div>
+                
+                <!-- Video 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="relative pt-[56.25%]">
+                        <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/6iy8DX9Jfa4" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-2 hindi-font">सांसद की हुंकार</h3>
+                        <p class="text-gray-600 hindi-font">RLP सांसद का धमाकेदार भाषण</p>
+                    </div>
+                </div>
+                
+                <!-- Video 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="relative pt-[56.25%]">
+                        <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/NEgJI4Y3JQ4" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-2 hindi-font">राजनीतिक विचार</h3>
+                        <p class="text-gray-600 hindi-font">RLP के विचारों की स्पष्टता</p>
+                    </div>
+                </div>
+                
+                <!-- Hidden Videos -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hidden-content">
+                    <div class="relative pt-[56.25%]">
+                        <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/OsJw6C223Lw" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-2 hindi-font">जाट आरक्षण</h3>
+                        <p class="text-gray-600 hindi-font">आरक्षण आंदोलन पर बेनीवाल का बयान</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hidden-content">
+                    <div class="relative pt-[56.25%]">
+                        <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/o0xv4FijwzE" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-2 hindi-font">किसान आंदोलन</h3>
+                        <p class="text-gray-600 hindi-font">RLP किसानों के साथ</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hidden-content">
+                    <div class="relative pt-[56.25%]">
+                        <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/kwdncrOioqs" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-2 hindi-font">AIIMS जोधपुर</h3>
+                        <p class="text-gray-600 hindi-font">बैठक के बाद पत्रकारों से बात</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-8">
+                <button id="showMoreVideos" class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-full transition duration-300 hindi-font">और वीडियो देखें</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leaders Section -->
+    <section id="leaders" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 section-title hindi-font">हमारे नेता</h2>
+            
+            <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Leader 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden leader-card transition duration-300">
+                    <img src="https://i.postimg.cc/zfqbFtTG/Ummeda-Ram-Beniwal.jpg" alt="उम्मेदाराम बेनीवाल" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-1 hindi-font">उम्मेदाराम बेनीवाल</h3>
+                        <p class="text-red-600 text-sm mb-2 hindi-font">EX. RLP MEMBER</p>
+                        <p class="text-gray-600 text-sm hindi-font"> present member of Indian National Congress </p>
+                        <p class="text-gray-600 text-sm hindi-font"> member of parliament from Barmer </p>
+                    </div>
+                </div>
+                
+                <!-- Leader 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden leader-card transition duration-300">
+                    <img src="https://i.postimg.cc/vZLQPTqb/5-IYPGA5l-400x400.png" alt="हनुमान बेनीवाल" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-1 hindi-font">हनुमान बेनीवाल</h3>
+                        <p class="text-red-600 text-sm mb-2 hindi-font">संस्थापक एवं राष्ट्रीय अध्यक्ष</p>
+                        <p class="text-gray-600 text-sm hindi-font">किसान नेता एवं सांसद</p>
+                        <p class="text-gray-600 text-sm hindi-font"> Char bar vidhayak Do Bar Sansad </p>
+                    </div>
+                </div>
+                
+                <!-- Leader 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden leader-card transition duration-300">
+                    <img src="https://i.postimg.cc/cH604msL/In-Shot-20250622-174226544.jpg" alt="डॉ. प्रकाश काकड़" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-1 hindi-font">डॉ. प्रकाश काकड़</h3>
+                        <p class="text-red-600 text-sm mb-2 hindi-font"> जिला अध्यक्ष, बाड़मेर</p>
+                        <p class="text-gray-600 text-sm hindi-font">युवा नेता एवं समाजसेवी</p>
+                    </div>
+                </div>
+
+                <!-- Leader 4 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden leader-card transition duration-300">
+                    <img src="https://i.postimg.cc/9fYNR06P/images-12-1.jpg" alt="Thansing doli" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-1 hindi-font">Thansing doli</h3>
+                        <p class="text-red-600 text-sm mb-2 hindi-font"> जिला अध्यक्ष, बालोतरा</p>
+                        <p class="text-gray-600 text-sm hindi-font">युवा नेता एवं समाजसेवी</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 section-title hindi-font">हमारी गैलरी</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="gallery-container">
+                <!-- Gallery Item 1 -->
+                <a href="https://i.postimg.cc/3NSLrXxY/48294c9415e7676cd649c83156c0f3e91719494523702304-original.jpg" data-lightbox="gallery" class="gallery-item">
+                    <img src="https://i.postimg.cc/3NSLrXxY/48294c9415e7676cd649c83156c0f3e91719494523702304-original.jpg" alt="RLP Rally" class="w-full h-40 object-cover rounded-lg shadow-md">
+                </a>
+                
+                <!-- Gallery Item 2 -->
+                <a href="https://i.postimg.cc/P5BR8Qzq/Hanuman-Beniwal-news-2025-05-f5977541e4b03f70223be809b321043a.jpg" data-lightbox="gallery" class="gallery-item">
+                    <img src="https://i.postimg.cc/P5BR8Qzq/Hanuman-Beniwal-news-2025-05-f5977541e4b03f70223be809b321043a.jpg" alt="Hanuman Beniwal" class="w-full h-40 object-cover rounded-lg shadow-md">
+                </a>
+                
+                <!-- Gallery Item 3 -->
+                <a href="https://i.postimg.cc/xCdMfWJN/hanuman-beniwal-1538292262.jpg" data-lightbox="gallery" class="gallery-item">
+                    <img src="https://i.postimg.cc/xCdMfWJN/hanuman-beniwal-1538292262.jpg" alt="Hanuman Beniwal Speech" class="w-full h-40 object-cover rounded-lg shadow-md">
+                </a>
+                
+                <!-- Hidden Gallery Items -->
+                <a href="https://i.postimg.cc/8zVKbBnX/Hanuman-Beniwal-MLA.jpg" data-lightbox="gallery" class="gallery-item hidden-content">
+                    <img src="https://i.postimg.cc/8zVKbBnX/Hanuman-Beniwal-MLA.jpg" alt="Hanuman Beniwal MLA" class="w-full h-40 object-cover rounded-lg shadow-md">
+                </a>
+                
+                <a href="https://i.postimg.cc/76B1Sx8N/images-12.jpg" data-lightbox="gallery" class="gallery-item hidden-content">
+                    <img src="https://i.postimg.cc/76B1Sx8N/images-12.jpg" alt="RLP Rally" class="w-full h-40 object-cover rounded-lg shadow-md">
+                </a>
+                
+                <a href="https://i.postimg.cc/W3p6DdK3/images-13.jpg" data-lightbox="gallery" class="gallery-item hidden-content">
+                    <img src="https://i.postimg.cc/W3p6DdK3/images-13.jpg" alt="RLP Meeting" class="w-full h-40 object-cover rounded-lg shadow-md">
+                </a>
+                
+                <a href="https://i.postimg.cc/fytdXmvw/images-18.jpg" data-lightbox="gallery" class="gallery-item hidden-content">
+                    <img src="https://i.postimg.cc/fytdXmvw/images-18.jpg" alt="RLP Workers" class="w-full h-40 object-cover rounded-lg shadow-md">
+                </a>
+                
+                <a href="https://i.postimg.cc/Qx75dgtm/images-20.jpg" data-lightbox="gallery" class="gallery-item hidden-content">
+                    <img src="https://i.postimg.cc/Qx75dgtm/images-20.jpg" alt="RLP Event" class="w-full h-40 object-cover rounded-lg shadow-md">
+                </a>
+            </div>
+            
+            <div class="text-center mt-8">
+                <button id="showMoreGallery" class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-full transition duration-300 hindi-font">और फोटो देखें</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 section-title hindi-font">ताजा समाचार</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8" id="news-container">
+                <!-- News 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="https://i.postimg.cc/pL3kGQTn/BAN604854.jpg" alt="राकेश बिश्नोई" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <span class="text-sm text-gray-500 hindi-font">22 जून 2025</span>
+                        <h3 class="font-bold text-xl my-2 hindi-font">राकेश बिश्नोई को मिला न्याय की दिशा में बड़ा कदम</h3>
+                        <p class="text-gray-700 mb-4 hindi-font">
+                            छात्र नेता राकेश बिश्नोई हत्याकांड में जनता के जबरदस्त आक्रोश, सोशल मीडिया मुहिम और राजनीतिक दबाव के चलते आखिरकार न्याय की दिशा में ठोस कार्रवाई शुरू हुई। RLP व युवाओं के लगातार संघर्ष ने इस केस को राष्ट्रीय मुद्दा बना दिया।
+                        </p>
+                        <a href="#" class="text-red-600 font-medium hindi-font">और पढ़ें →</a>
+                    </div>
+                </div>
+                
+                <!-- News 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="https://i.postimg.cc/nhX0GSHJ/IMG-20250623-WA0005.jpg" alt="निर्मल चौधरी" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <span class="text-sm text-gray-500 hindi-font">20 जून 2025</span>
+                        <h3 class="font-bold text-xl my-2 hindi-font">निर्मल चौधरी की गिरफ्तारी</h3>
+                        <p class="text-gray-700 mb-4 hindi-font">
+                            मामले में आरोपों के घेरे में आए छात्र नेता निर्मल चौधरी को पुलिस ने गिरफ्तार किया। लगातार बढ़ते जनदबाव और सबूतों के आधार पर यह गिरफ्तारी हुई, जिसे जनता ने न्याय की जीत माना।
+                        </p>
+                        <a href="#" class="text-red-600 font-medium hindi-font">और पढ़ें →</a>
+                    </div>
+                </div>
+                
+                <!-- Hidden News -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hidden-content">
+                    <img src="https://i.postimg.cc/GhzQYkxK/513507862-18229716709294688-4676799255003730642-n.webp" alt="राकेश बिश्नोई" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <span class="text-sm text-gray-500 hindi-font">29 जून 2025</span>
+                        <h3 class="font-bold text-xl my-2 hindi-font">जाट आरक्षण संघर्ष</h3>
+                        <p class="text-gray-700 mb-4 hindi-font">
+                            आज हनुमान बेनीवाल जाट आरक्षण आंदोलन मे भाग लेने , कल जाट समुदाय ने आन्दोलन मे आने के लिए पहले चावल  दिये आंदोलन आज दिनांक 29 jun 2025 को भरतपुर मे रखा गया हैं 
+                        </p>
+                        <a href="#" class="text-red-600 font-medium hindi-font">और पढ़ें →</a>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hidden-content">
+                    <img src="https://i.postimg.cc/X7HsF66L/IMG-20250623-WA0006.jpg" alt="RLP Statement" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <span class="text-sm text-gray-500 hindi-font">18 जून 2025</span>
+                        <h3 class="font-bold text-xl my-2 hindi-font">निर्मल चौधरी को RLP से कोई संबंध नहीं</h3>
+                        <p class="text-gray-700 mb-4 hindi-font">
+                            राष्ट्रीय लोकतांत्रिक पार्टी ने स्पष्ट किया है कि निर्मल चौधरी का पार्टी से कोई संबंध नहीं है और न ही पार्टी ऐसे किसी कृत्य को समर्थन देती है। पार्टी पूरी तरह राकेश बिश्नोई और उनके परिवार के साथ खड़ी है।
+                        </p>
+                        <a href="#" class="text-red-600 font-medium hindi-font">और पढ़ें →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-8">
+                <button id="showMoreNews" class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-full transition duration-300 hindi-font">और समाचार देखें</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Explorer RLP Modal -->
+    <div id="explorer-modal">
+        <div class="explorer-content">
+            <div class="explorer-header">
+                <h2 class="hindi-font">राष्ट्रीय लोकतांत्रिक पार्टी - विकिपीडिया</h2>
+                <button class="close-explorer" id="close-explorer">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="explorer-tabs">
+                <div class="explorer-tab hindi-font active" data-tab="overview">अवलोकन</div>
+                <div class="explorer-tab hindi-font" data-tab="history">इतिहास</div>
+                <div class="explorer-tab hindi-font" data-tab="leadership">नेतृत्व</div>
+                <div class="explorer-tab hindi-font" data-tab="elections">चुनावी प्रदर्शन</div>
+                <div class="explorer-tab hindi-font" data-tab="references">संदर्भ</div>
+            </div>
+            
+            <div class="explorer-body">
+                <!-- Overview Section -->
+                <div class="explorer-section active" id="overview-section">
+                    <div class="info-card">
+                        <p class="hindi-font">राष्ट्रीय लोकतांत्रिक पार्टी (संक्षिप्त रूप में आरएलपी) राजस्थान राज्य में एक भारतीय राजनीतिक पार्टी है। इसकी स्थापना हनुमान बेनीवाल ने 29 अक्टूबर 2018 को 2018 राजस्थान विधानसभा चुनाव की पूर्व संध्या पर क्षेत्रीय मुद्दों, विशेष रूप से किसान समुदाय के मुद्दों को संबोधित करने के उद्देश्य से की थी।</p>
+                    </div>
+                    
+                    <h3 class="hindi-font">पार्टी प्रतीक और रंग</h3>
+                    <div class="flex flex-wrap gap-4 mt-4">
+                        <div class="flex items-center">
+                            <div class="w-16 h-16 rounded-full bg-green-600 flex items-center justify-center">
+                                <div class="w-8 h-8 bg-yellow-400 rounded-full"></div>
+                            </div>
+                            <div class="ml-3">
+                                <p class="hindi-font font-semibold">चुनाव चिन्ह</p>
+                                <p class="hindi-font text-sm">बोतल</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-16 h-16 rounded-md bg-green-600"></div>
+                            <div class="ml-3">
+                                <p class="hindi-font font-semibold">पार्टी रंग</p>
+                                <p class="hindi-font text-sm">हरा</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-16 h-16 rounded-md bg-yellow-400"></div>
+                            <div class="ml-3">
+                                <p class="hindi-font font-semibold">द्वितीयक रंग</p>
+                                <p class="hindi-font text-sm">पीला</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="hindi-font mt-8">पार्टी विचारधारा</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <h4 class="hindi-font font-semibold text-green-700">किसान उत्थान</h4>
+                            <p class="hindi-font mt-2">किसानों के हितों की रक्षा और उनकी समस्याओं का समाधान</p>
+                        </div>
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <h4 class="hindi-font font-semibold text-green-700">क्षेत्रवाद</h4>
+                            <p class="hindi-font mt-2">स्थानीय मुद्दों और क्षेत्रीय विकास पर ध्यान केंद्रित</p>
+                        </div>
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <h4 class="hindi-font font-semibold text-green-700">जनतांत्रिक मूल्य</h4>
+                            <p class="hindi-font mt-2">लोकतंत्र और सामाजिक न्याय को बढ़ावा देना</p>
+                        </div>
+                    </div>
+                    
+                    <h3 class="hindi-font mt-8">गठबंधन</h3>
+                    <div class="flex flex-wrap gap-4 mt-4">
+                        <div class="bg-blue-100 px-4 py-2 rounded-full hindi-font">भारत ब्लॉक (2024-वर्तमान)</div>
+                        <div class="bg-orange-100 px-4 py-2 rounded-full hindi-font">एनडीए (2019-20)</div>
+                    </div>
+                </div>
+                
+                <!-- History Section -->
+                <div class="explorer-section" id="history-section">
+                    <h3 class="hindi-font">पार्टी का इतिहास</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date hindi-font">2008</div>
+                            <p class="hindi-font">हनुमान बेनीवाल पहली बार भारतीय जनता पार्टी के सदस्य के रूप में राजस्थान विधानसभा के लिए चुने गए</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-date hindi-font">2013</div>
+                            <p class="hindi-font">राजेंद्र राठौर और वसुंधरा राजे जैसे प्रमुख पार्टी नेताओं के खिलाफ बेनीवाल के लगातार दावों के कारण उन्हें भाजपा से निलंबित कर दिया गया</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-date hindi-font">अक्टूबर 2018</div>
+                            <p class="hindi-font">हनुमान बेनीवाल ने जयपुर में "बोतल" के चुनाव चिन्ह के साथ राष्ट्रीय लोकतांत्रिक पार्टी की स्थापना की</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-date hindi-font">2018</div>
+                            <p class="hindi-font">RLP ने राजस्थान विधानसभा की तीन सीटों पर जीत हासिल की</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-date hindi-font">2019</div>
+                            <p class="hindi-font">RLP ने भारतीय जनता पार्टी के साथ गठबंधन किया और हनुमान बेनीवाल लोकसभा के लिए चुने गए</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-date hindi-font">दिसंबर 2020</div>
+                            <p class="hindi-font">कृषि कानूनों के विरोध में RLP ने एनडीए गठबंधन छोड़ दिया</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-date hindi-font">अक्टूबर 2023</div>
+                            <p class="hindi-font">RLP ने 2023 राजस्थान विधानसभा चुनावों के लिए आज़ाद समाज पार्टी के साथ गठबंधन की घोषणा की</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-date hindi-font">मार्च 2024</div>
+                            <p class="hindi-font">हनुमान बेनीवाल को नागौर से इंडिया ब्लॉक का उम्मीदवार घोषित किया गया</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-date hindi-font">जनवरी 2025</div>
+                            <p class="hindi-font">RLP ने 2025 के दिल्ली विधानसभा चुनावों के लिए आम आदमी पार्टी के साथ गठबंधन की घोषणा की</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Leadership Section -->
+                <div class="explorer-section" id="leadership-section">
+                    <h3 class="hindi-font">पार्टी नेतृत्व</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                            <div class="flex items-center">
+                                <img src="https://i.postimg.cc/vZLQPTqb/5-IYPGA5l-400x400.png" alt="हनुमान बेनीवाल" class="w-16 h-16 rounded-full object-cover">
+                                <div class="ml-4">
+                                    <h4 class="hindi-font font-bold">हनुमान बेनीवाल</h4>
+                                    <p class="hindi-font text-green-700">संस्थापक एवं राष्ट्रीय अध्यक्ष</p>
+                                </div>
+                            </div>
+                            <p class="hindi-font mt-3">हनुमान बेनीवाल राजस्थान के एक प्रमुख किसान नेता हैं। उन्होंने 2008 में पहली बार भाजपा के टिकट पर विधानसभा चुनाव जीता। 2018 में उन्होंने राष्ट्रीय लोकतांत्रिक पार्टी की स्थापना की। वर्तमान में वे नागौर से सांसद हैं।</p>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                            <div class="flex items-center">
+                                <img src="https://i.postimg.cc/BvSJR3kD/Narayan-Beniwal-MLA.jpg" alt="नारायण बेनीवाल" class="w-16 h-16 rounded-full object-cover">
+                                <div class="ml-4">
+                                    <h4 class="hindi-font font-bold">नारायण बेनीवाल</h4>
+                                    <p class="hindi-font text-green-700">सचिव</p>
+                                </div>
+                            </div>
+                            <p class="hindi-font mt-3">नारायण बेनीवाल पार्टी के वरिष्ठ नेता और सचिव हैं। वे पूर्व विधायक और किसान नेता हैं जिन्होंने राजस्थान की राजनीति में महत्वपूर्ण भूमिका निभाई है। उनके नेतृत्व में पार्टी ने किसान आंदोलनों में सक्रिय भाग लिया है।</p>
+                        </div>
+                    </div>
+                    
+                    <h3 class="hindi-font mt-8">प्रमुख सहयोगी</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <h4 class="hindi-font font-semibold">घनश्याम तिवारी</h4>
+                            <p class="hindi-font text-sm mt-2">पार्टी के शुरुआती समर्थकों में से एक</p>
+                        </div>
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <h4 class="hindi-font font-semibold">जयंत चौधरी</h4>
+                            <p class="hindi-font text-sm mt-2">किसान नेता और पार्टी समर्थक</p>
+                        </div>
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <h4 class="hindi-font font-semibold">संजय लाठर</h4>
+                            <p class="hindi-font text-sm mt-2">पार्टी के प्रमुख समर्थक और सलाहकार</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Elections Section -->
+                <div class="explorer-section" id="elections-section">
+                    <h3 class="hindi-font">लोकसभा चुनाव परिणाम</h3>
+                    
+                    <table class="election-table">
+                        <thead>
+                            <tr>
+                                <th class="hindi-font">वर्ष</th>
+                                <th class="hindi-font">लोकसभा</th>
+                                <th class="hindi-font">पार्टी नेता</th>
+                                <th class="hindi-font">गठबंधन</th>
+                                <th class="hindi-font">जीती गई सीटें</th>
+                                <th class="hindi-font">वोट %</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="hindi-font">2019</td>
+                                <td class="hindi-font">17वीं</td>
+                                <td class="hindi-font">हनुमान बेनीवाल</td>
+                                <td class="hindi-font">एनडीए</td>
+                                <td class="hindi-font">1</td>
+                                <td class="hindi-font">2.40%</td>
+                            </tr>
+                            <tr>
+                                <td class="hindi-font">2024</td>
+                                <td class="hindi-font">18वीं</td>
+                                <td class="hindi-font">हनुमान बेनीवाल</td>
+                                <td class="hindi-font">भारत</td>
+                                <td class="hindi-font">1</td>
+                                <td class="hindi-font">2.38%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3 class="hindi-font mt-8">राजस्थान विधानसभा चुनाव परिणाम</h3>
+                    
+                    <table class="election-table">
+                        <thead>
+                            <tr>
+                                <th class="hindi-font">वर्ष</th>
+                                <th class="hindi-font">पार्टी नेता</th>
+                                <th class="hindi-font">गठबंधन</th>
+                                <th class="hindi-font">जीती गई सीटें</th>
+                                <th class="hindi-font">कुल वोट</th>
+                                <th class="hindi-font">वोट %</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="hindi-font">2018</td>
+                                <td class="hindi-font">हनुमान बेनीवाल</td>
+                                <td class="hindi-font">कोई नहीं</td>
+                                <td class="hindi-font">3</td>
+                                <td class="hindi-font">856,038</td>
+                                <td class="hindi-font">2.40%</td>
+                            </tr>
+                            <tr>
+                                <td class="hindi-font">2023</td>
+                                <td class="hindi-font">हनुमान बेनीवाल</td>
+                                <td class="hindi-font">एएसपी(केआर)+</td>
+                                <td class="hindi-font">1</td>
+                                <td class="hindi-font">946,209</td>
+                                <td class="hindi-font">2.38%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="mt-8 p-4 bg-yellow-50 border-l-4 border-yellow-400">
+                        <h4 class="hindi-font font-bold">महत्वपूर्ण जानकारी</h4>
+                        <p class="hindi-font mt-2">2019 में RLP ने नागौर सीट पर चुनाव लड़ा और राज्य की अन्य सभी सीटों पर भारतीय जनता पार्टी को समर्थन दिया। हनुमान बेनीवाल नागौर सीट से लोकसभा के लिए चुने गए थे।</p>
+                    </div>
+                </div>
+                
+                <!-- References Section -->
+                <div class="explorer-section" id="references-section">
+                    <h3 class="hindi-font">संदर्भ सूची</h3>
+                    
+                    <ul class="reference-list">
+                        <li data-ref="1" class="hindi-font">"Hanuman Beniwal floats new political party in Rajasthan". The Hindu. 29 October 2018.</li>
+                        <li data-ref="2" class="hindi-font">"Ahead of Rajasthan polls, former BJP leader launches new party". NDTV. 29 October 2018.</li>
+                        <li data-ref="3" class="hindi-font">"MLA Beniwal suspended from BJP". The Times of India. 7 March 2019.</li>
+                        <li data-ref="4" class="hindi-font">Iqbal, Mohammed (16 October 2018). "Preparations in full swing for Kisan Hunkar Rally in Jaipur". The Hindu.</li>
+                        <li data-ref="5" class="hindi-font">"Kisan Hunkar Rally in Jaipur on 29th, Hanuman Beniwal will announce new party". Dainik Bhaskar. 10 October 2018.</li>
+                        <li data-ref="6" class="hindi-font">Iqbal, Mohammed (30 November 2020). "NDA constituent RLP threatens to quit alliance over farm laws". The Hindu.</li>
+                        <li data-ref="7" class="hindi-font">Iqbal, Mohammed (10 December 2018). "Raje resigns, Congress two seats short of majority". The Hindu.</li>
+                        <li data-ref="8" class="hindi-font">Goyal, Yash (4 April 2019). "RLP joins NDA in Rajasthan". Tribune India.</li>
+                        <li data-ref="9" class="hindi-font">"Nagaur election result: Hanuman Beniwal defeats Jyoti Mirdha by over 1.8 lakh votes". Financial Express. 14 May 2019.</li>
+                        <li data-ref="10" class="hindi-font">Saini, Sachin (21 December 2020). "Call on NDA, RLP break-up on Dec 26, says Hanuman Beniwal". Hindustan Times.</li>
+                        <li data-ref="11" class="hindi-font">"BJP ally Rashtriya Loktantrik Party quits NDA over farm laws". India Today. 26 December 2020.</li>
+                        <li data-ref="12" class="hindi-font">Nair, Sobhana K. (31 October 2023). "RLP makes another bid to lose its marginal player tag in Rajasthan politics". The Hindu.</li>
+                        <li data-ref="13" class="hindi-font">"RLP supremo Hanuman Beniwal is India Bloc candidate from Nagaur following alliance with Congress". The Hindu. 25 March 2024.</li>
+                        <li data-ref="14" class="hindi-font">"Delhi Assembly Elections 2025: Rashtriya Loktantrik Party announces support for AAP in upcoming polls". Deccan Herald. 11 January 2025.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-    
-    <!-- Main Content -->
-    <div class="main-content">
-        <!-- Header -->
-        <header>
-            <div class="header-container">
-                <div class="logo">
-                    <div class="logo-img">RLP</div>
-                    <div class="logo-text">राष्ट्रीय लोकतांत्रिक पार्टी</div>
-                </div>
-                <ul class="nav-menu">
-                    <li><a href="#home">होम</a></li>
-                    <li><a href="#leaders">नेता</a></li>
-                    <li><a href="#products">उत्पाद</a></li>
-                    <li><a href="#gallery">गैलरी</a></li>
-                    <li><a href="#videos">वीडियो</a></li>
-                    <li><a href="#news">समाचार</a></li>
-                    <li><a href="#membership">सदस्यता</a></li>
-                    <li><a href="#comments">टिप्पणियाँ</a></li>
-                    <li><a href="#contact">संपर्क</a></li>
-                </ul>
-                <div class="search-container">
-                    <input type="text" id="global-search" placeholder="खोजें...">
-                    <button id="search-btn"><i class="fas fa-search"></i></button>
-                </div>
-                <div class="mobile-toggle">
-                    <i class="fas fa-bars"></i>
-                </div>
+
+    <!-- Admin Panel Modal -->
+    <div id="admin-modal">
+        <div class="admin-content">
+            <div class="admin-header">
+                <h2 class="hindi-font">व्यवस्थापक पैनल</h2>
+                <button class="close-admin" id="close-admin">
+                    <i class="fas fa-times"></i>
+                </button>
             </div>
-        </header>
-        
-        <!-- Hero Section -->
-        <section class="hero" id="home">
-            <div class="hero-content">
-                <h1 class="hero-title">युवा, किसान, मजदूर और सैनिकों की आवाज</h1>
-                <p class="hero-subtitle">राष्ट्रीय लोकतांत्रिक पार्टी - पश्चिमी राजस्थान में बदलाव की नई लहर</p>
-                <a href="#membership" class="hero-btn">सदस्य बनें</a>
+            
+            <div class="admin-tabs">
+                <div class="admin-tab hindi-font active" data-tab="videos">वीडियो</div>
+                <div class="admin-tab hindi-font" data-tab="news">समाचार</div>
+                <div class="admin-tab hindi-font" data-tab="gallery">गैलरी</div>
+                <div class="admin-tab hindi-font" data-tab="leaders">नेता</div>
             </div>
-        </section>
-        
-        <!-- Leaders Section -->
-        <section class="section leaders-section" id="leaders">
-            <h2 class="section-title">हमारे नेता</h2>
-            <div class="leaders-grid" id="leaders-container">
-                <div class="leader-card">
-                    <div class="leader-img" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://raw.githubusercontent.com/yourusername/hanuman-beniwal/main/hanuman.jpg') center/cover">
-                        <!-- Image space for Hanuman Beniwal -->
-                    </div>
-                    <div class="leader-info">
-                        <h3 class="leader-name">हनुमान बेनीवाल</h3>
-                        <p class="leader-position">राष्ट्रीय संयोजक, RLP</p>
-                        <p class="leader-desc">2018 में स्थापित राष्ट्रीय लोकतांत्रिक पार्टी के संस्थापक। युवाओं, किसानों और मजदूरों के हक के लिए संघर्षरत। 2019 से नागौर से लोकसभा सांसद।</p>
-                    </div>
-                </div>
-                
-                <div class="leader-card">
-                    <div class="leader-img" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://raw.githubusercontent.com/yourusername/prakash-chaudhary/main/prakash.jpg') center/cover">
-                        <!-- Image space for Prakash Chaudhary -->
-                    </div>
-                    <div class="leader-info">
-                        <h3 class="leader-name">डॉ. प्रकाश चौधरी</h3>
-                        <p class="leader-position">जिला संयोजक, बाड़मेर</p>
-                        <p class="leader-desc">युवा चेहरा और सोशल मीडिया प्रमुख। बाड़मेर-जैसलमेर बेल्ट में RLP की लोकप्रियता बढ़ाने में अग्रणी भूमिका।</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Products Section -->
-        <section class="section products-section" id="products">
-            <h2 class="section-title">RLP उत्पाद</h2>
-            <div class="products-container" id="products-container">
-                <div class="product-card">
-                    <div class="product-img">
-                        <i class="fas fa-book"></i>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">RLP विचारधारा पुस्तिका</h3>
-                        <p class="product-desc">पार्टी की मूल विचारधारा, सिद्धांतों और भविष्य की योजनाओं पर विस्तृत जानकारी।</p>
-                        <a href="#" class="product-link">अधिक जानें</a>
-                    </div>
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-img">
-                        <i class="fas fa-tshirt"></i>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">RLP मर्चेंडाइज</h3>
-                        <p class="product-desc">पार्टी के रंगों और प्रतीक चिन्ह वाले टी-शर्ट, टोपी और अन्य सामग्री।</p>
-                        <a href="#" class="product-link">अधिक जानें</a>
-                    </div>
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-img">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">RLP मोबाइल ऐप</h3>
-                        <p class="product-desc">पार्टी की नवीनतम गतिविधियों, रैलियों और कार्यक्रमों से अपडेट रहें।</p>
-                        <a href="#" class="product-link">अधिक जानें</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Gallery Section -->
-        <section class="section gallery-section" id="gallery">
-            <h2 class="section-title">गैलरी</h2>
-            <div class="gallery-container" id="gallery-container">
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1580136605362-0c4cb6e34c8f?ixlib=rb-4.0.3" alt="रैली 2023" class="gallery-img">
-                    <div class="gallery-title">रैली 2023</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1580136605362-0c4cb6e34c8f?ixlib=rb-4.0.3" alt="युवा सम्मेलन" class="gallery-img">
-                    <div class="gallery-title">युवा सम्मेलन</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1580136605362-0c4cb6e34c8f?ixlib=rb-4.0.3" alt="किसान सभा" class="gallery-img">
-                    <div class="gallery-title">किसान सभा</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1580136605362-0c4cb6e34c8f?ixlib=rb-4.0.3" alt="जनसभा" class="gallery-img">
-                    <div class="gallery-title">जनसभा</div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Video Section -->
-        <section class="section video-section" id="videos">
-            <h2 class="section-title">वीडियो</h2>
-            <div class="video-container" id="video-container">
-                <div class="video-card">
-                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div class="video-info">
-                        <h3 class="video-title">राजस्थान में RLP का प्रभाव</h3>
-                    </div>
-                </div>
-                
-                <div class="video-card">
-                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div class="video-info">
-                        <h3 class="video-title">युवा नेता सम्मेलन</h3>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- News Section -->
-        <section class="section news-section" id="news">
-            <h2 class="section-title">समाचार</h2>
-            <div class="news-container" id="news-container">
-                <div class="news-card">
-                    <div class="news-img" style="background: url('https://images.unsplash.com/photo-1580136605362-0c4cb6e34c8f?ixlib=rb-4.0.3') center/cover"></div>
-                    <div class="news-info">
-                        <h3 class="news-title">बाड़मेर में RLP की जनसभा</h3>
-                        <p class="news-desc">राष्ट्रीय लोकतांत्रिक पार्टी ने बाड़मेर में एक विशाल जनसभा का आयोजन किया, जिसमें हजारों समर्थकों ने भाग लिया।</p>
-                        <p class="news-date">15 जून 2025</p>
-                    </div>
-                </div>
-                
-                <div class="news-card">
-                    <div class="news-img" style="background: url('https://images.unsplash.com/photo-1580136605362-0c4cb6e34c8f?ixlib=rb-4.0.3') center/cover"></div>
-                    <div class="news-info">
-                        <h3 class="news-title">युवा नीति पर कार्यशाला</h3>
-                        <p class="news-desc">पार्टी ने युवा नीतियों पर एक कार्यशाला का आयोजन किया, जिसमें राज्य भर के युवा नेताओं ने भाग लिया।</p>
-                        <p class="news-date">10 जून 2025</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Membership Section -->
-        <section class="section membership-section" id="membership">
-            <h2 class="section-title">सदस्यता</h2>
-            <div class="membership-container">
-                <p class="membership-desc">राष्ट्रीय लोकतांत्रिक पार्टी का सदस्य बनकर बदलाव का हिस्सा बनें। सदस्य बनने पर आपको एक यूनिक आईडी और रंगीन सदस्यता कार्ड प्राप्त होगा।</p>
-                
-                <div class="membership-form">
-                    <div class="form-group">
-                        <label for="name">पूरा नाम</label>
-                        <input type="text" id="name" placeholder="अपना पूरा नाम दर्ज करें" required>
+            
+            <div class="admin-body">
+                <!-- Videos Admin Section -->
+                <div class="admin-section active" id="videos-section">
+                    <button class="back-button" id="back-to-main">
+                        <i class="fas fa-arrow-left"></i> वापस
+                    </button>
+                    
+                    <h3 class="hindi-font">वीडियो प्रबंधन</h3>
+                    
+                    <div class="admin-form">
+                        <label for="video-title" class="hindi-font">वीडियो शीर्षक</label>
+                        <input type="text" id="video-title" placeholder="वीडियो का शीर्षक दर्ज करें">
+                        
+                        <label for="video-description" class="hindi-font">विवरण</label>
+                        <textarea id="video-description" rows="3" placeholder="वीडियो का विवरण दर्ज करें"></textarea>
+                        
+                        <label for="video-url" class="hindi-font">YouTube URL</label>
+                        <input type="text" id="video-url" placeholder="YouTube वीडियो URL दर्ज करें">
+                        
+                        <button id="add-video" class="hindi-font">वीडियो जोड़ें</button>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="email">ईमेल</label>
-                        <input type="email" id="email" placeholder="अपना ईमेल दर्ज करें" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">मोबाइल नंबर</label>
-                        <input type="tel" id="phone" placeholder="अपना मोबाइल नंबर दर्ज करें" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="address">पता</label>
-                        <input type="text" id="address" placeholder="अपना पूरा पता दर्ज करें" required>
-                    </div>
-                    
-                    <button class="register-btn" id="register-btn">सदस्यता रजिस्टर करें</button>
-                    
-                    <div class="message" id="membership-message"></div>
-                </div>
-                
-                <div class="membership-card-container" id="membership-card-container">
-                    <div class="membership-card" id="card-to-download">
-                        <div class="card-logo">
-                            <i class="fas fa-landmark"></i>
+                    <div class="content-list">
+                        <h4 class="hindi-font font-bold mb-4">वर्तमान वीडियो</h4>
+                        <div class="content-item">
+                            <div>
+                                <h5 class="font-bold hindi-font">सभा में हुंकार</h5>
+                                <p class="text-sm hindi-font">https://youtu.be/tHQVtB101qo</p>
+                            </div>
+                            <div class="content-actions">
+                                <button title="Edit"><i class="fas fa-edit"></i></button>
+                                <button title="Delete"><i class="fas fa-trash"></i></button>
+                            </div>
                         </div>
-                        <h3 class="card-title">राष्ट्रीय लोकतांत्रिक पार्टी</h3>
-                        <p>सदस्यता कार्ड</p>
-                        <div class="member-name" id="card-name"></div>
-                        <div class="member-id" id="card-id"></div>
-                        <button class="download-btn" id="download-card">कार्ड डाउनलोड करें</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Comment Section -->
-        <section class="section comment-section" id="comments">
-            <h2 class="section-title">आपकी आवाज</h2>
-            <div class="comment-container">
-                <form class="comment-form" id="comment-form">
-                    <div class="form-group">
-                        <label for="comment-name">आपका नाम</label>
-                        <input type="text" id="comment-name" placeholder="अपना नाम दर्ज करें" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="comment-text">आपकी टिप्पणी</label>
-                        <textarea id="comment-text" placeholder="हमें आपकी राय जानना अच्छा लगेगा..." required></textarea>
-                    </div>
-                    <button type="button" class="submit-btn" id="submit-comment">टिप्पणी सबमिट करें</button>
-                    <div class="message" id="comment-message"></div>
-                </form>
-                
-                <div class="comments-list" id="comments-list">
-                    <div class="comment">
-                        <div class="comment-header">
-                            <div class="comment-avatar">R</div>
-                            <div class="comment-author">रमेश कुमार</div>
-                            <div class="comment-date">22 जून 2025</div>
-                        </div>
-                        <div class="comment-content">RLP हमारे क्षेत्र के विकास के लिए अच्छा काम कर रही है। युवाओं के लिए अच्छे कार्यक्रम हैं।</div>
-                    </div>
-                    
-                    <div class="comment">
-                        <div class="comment-header">
-                            <div class="comment-avatar">S</div>
-                            <div class="comment-author">सीमा शर्मा</div>
-                            <div class="comment-date">20 जून 2025</div>
-                        </div>
-                        <div class="comment-content">किसानों की समस्याओं को हल करने के लिए धन्यवाद। हम आपके साथ हैं!</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Contact Section -->
-        <section class="section contact-section" id="contact">
-            <h2 class="section-title">संपर्क करें</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>मुख्य कार्यालय</h3>
-                            <p>राष्ट्रीय लोकतांत्रिक पार्टी, जयनारायण व्यास कॉलोनी, जोधपुर, राजस्थान</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>ईमेल</h3>
-                            <p>prakashkakd2008@gmail.com</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone-alt"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>फोन</h3>
-                            <p>+91 9549877946</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-share-alt"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>सोशल मीडिया</h3>
-                            <div class="social-links">
-                                <a href="https://www.facebook.com/profile.php?id=61566574767972" class="social-link" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                                <a href="https://www.instagram.com/pc_bmr_12/" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
-                                <a href="https://x.com/Drprakash9512" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>
-                                <a href="https://youtube.com/@aijangalumanch?si=-8gl_MBEI2ezIGu9" class="social-link" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <div class="content-item">
+                            <div>
+                                <h5 class="font-bold hindi-font">सांसद की हुंकार</h5>
+                                <p class="text-sm hindi-font">https://youtu.be/6iy8DX9Jfa4</p>
+                            </div>
+                            <div class="content-actions">
+                                <button title="Edit"><i class="fas fa-edit"></i></button>
+                                <button title="Delete"><i class="fas fa-trash"></i></button>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <form class="contact-form" id="contact-form">
-                    <div class="form-group">
-                        <input type="text" id="contact-name" name="name" placeholder="आपका नाम" required>
+                <!-- News Admin Section -->
+                <div class="admin-section" id="news-section">
+                    <button class="back-button" id="back-to-main">
+                        <i class="fas fa-arrow-left"></i> वापस
+                    </button>
+                    
+                    <h3 class="hindi-font">समाचार प्रबंधन</h3>
+                    
+                    <div class="admin-form">
+                        <label for="news-title" class="hindi-font">समाचार शीर्षक</label>
+                        <input type="text" id="news-title" placeholder="समाचार का शीर्षक दर्ज करें">
+                        
+                        <label for="news-date" class="hindi-font">तारीख</label>
+                        <input type="date" id="news-date">
+                        
+                        <label for="news-description" class="hindi-font">विवरण</label>
+                        <textarea id="news-description" rows="3" placeholder="समाचार का विवरण दर्ज करें"></textarea>
+                        
+                        <label for="news-image" class="hindi-font">छवि URL</label>
+                        <input type="text" id="news-image" placeholder="छवि URL दर्ज करें">
+                        
+                        <button id="add-news" class="hindi-font">समाचार जोड़ें</button>
                     </div>
-                    <div class="form-group">
-                        <input type="email" id="contact-email" name="email" placeholder="आपका ईमेल" required>
+                    
+                    <div class="content-list">
+                        <h4 class="hindi-font font-bold mb-4">वर्तमान समाचार</h4>
+                        <div class="content-item">
+                            <div>
+                                <h5 class="font-bold hindi-font">राकेश बिश्नोई को मिला न्याय की दिशा में बड़ा कदम</h5>
+                                <p class="text-sm hindi-font">22 जून 2025</p>
+                            </div>
+                            <div class="content-actions">
+                                <button title="Edit"><i class="fas fa-edit"></i></button>
+                                <button title="Delete"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <input type="text" id="contact-subject" name="subject" placeholder="विषय" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="contact-message" name="message" placeholder="आपका संदेश" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn" id="submit-contact">संदेश भेजें</button>
-                    <div class="message" id="contact-message"></div>
-                </form>
-            </div>
-        </section>
-        
-        <!-- Footer -->
-        <footer>
-            <div class="footer-content">
-                <div class="footer-logo">RLP</div>
-                <p>राष्ट्रीय लोकतांत्रिक पार्टी - युवा, किसान, मजदूर और सैनिकों की आवाज</p>
-                
-                <div class="footer-links">
-                    <a href="#home">होम</a>
-                    <a href="#leaders">नेता</a>
-                    <a href="#products">उत्पाद</a>
-                    <a href="#gallery">गैलरी</a>
-                    <a href="#videos">वीडियो</a>
-                    <a href="#news">समाचार</a>
-                    <a href="#membership">सदस्यता</a>
-                    <a href="#comments">टिप्पणियाँ</a>
-                    <a href="#contact">संपर्क</a>
                 </div>
                 
-                <p class="copyright">© 2025 राष्ट्रीय लोकतांत्रिक पार्टी। सर्वाधिकार सुरक्षित। डॉ. प्रकाश चौधरी द्वारा विकसित</p>
+                <!-- Gallery Admin Section -->
+                <div class="admin-section" id="gallery-section">
+                    <button class="back-button" id="back-to-main">
+                        <i class="fas fa-arrow-left"></i> वापस
+                    </button>
+                    
+                    <h3 class="hindi-font">गैलरी प्रबंधन</h3>
+                    
+                    <div class="admin-form">
+                        <label for="gallery-image" class="hindi-font">छवि URL</label>
+                        <input type="text" id="gallery-image" placeholder="छवि URL दर्ज करें">
+                        
+                        <label for="gallery-caption" class="hindi-font">कैप्शन</label>
+                        <input type="text" id="gallery-caption" placeholder="छवि के लिए कैप्शन">
+                        
+                        <button id="add-gallery" class="hindi-font">छवि जोड़ें</button>
+                    </div>
+                    
+                    <div class="content-list">
+                        <h4 class="hindi-font font-bold mb-4">वर्तमान गैलरी</h4>
+                        <div class="content-item">
+                            <div>
+                                <h5 class="font-bold hindi-font">RLP Rally</h5>
+                                <p class="text-sm hindi-font">https://i.postimg.cc/3NSLrXxY/48294c9415e7676cd649c83156c0f3e91719494523702304-original.jpg</p>
+                            </div>
+                            <div class="content-actions">
+                                <button title="Edit"><i class="fas fa-edit"></i></button>
+                                <button title="Delete"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Leaders Admin Section -->
+                <div class="admin-section" id="leaders-section">
+                    <button class="back-button" id="back-to-main">
+                        <i class="fas fa-arrow-left"></i> वापस
+                    </button>
+                    
+                    <h3 class="hindi-font">नेता प्रबंधन</h3>
+                    
+                    <div class="admin-form">
+                        <label for="leader-name" class="hindi-font">नेता का नाम</label>
+                        <input type="text" id="leader-name" placeholder="नेता का नाम दर्ज करें">
+                        
+                        <label for="leader-position" class="hindi-font">पद</label>
+                        <input type="text" id="leader-position" placeholder="नेता का पद दर्ज करें">
+                        
+                        <label for="leader-description" class="hindi-font">विवरण</label>
+                        <textarea id="leader-description" rows="3" placeholder="नेता के बारे में विवरण"></textarea>
+                        
+                        <label for="leader-image" class="hindi-font">छवि URL</label>
+                        <input type="text" id="leader-image" placeholder="नेता की छवि URL दर्ज करें">
+                        
+                        <button id="add-leader" class="hindi-font">नेता जोड़ें</button>
+                    </div>
+                    
+                    <div class="content-list">
+                        <h4 class="hindi-font font-bold mb-4">वर्तमान नेता</h4>
+                        <div class="content-item">
+                            <div>
+                                <h5 class="font-bold hindi-font">हनुमान बेनीवाल</h5>
+                                <p class="text-sm hindi-font">संस्थापक एवं राष्ट्रीय अध्यक्ष</p>
+                            </div>
+                            <div class="content-actions">
+                                <button title="Edit"><i class="fas fa-edit"></i></button>
+                                <button title="Delete"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </footer>
+        </div>
     </div>
 
-    <script>
-        // EmailJS Initialization
-        (function() {
-            // Initialize EmailJS with your user ID (public key)
-            emailjs.init("YOUR_PUBLIC_KEY");
-        })();
-        
-        // DOM Elements
-        const doorAnimation = document.querySelector('.door-container');
-        const mainContent = document.querySelector('.main-content');
-        const syncIndicator = document.getElementById('sync-indicator');
-        
-        // Show main content after door animation
-        document.addEventListener('DOMContentLoaded', function() {
-            const leftDoor = document.querySelector('.left-door');
-            const rightDoor = document.querySelector('.right-door');
-            
-            setTimeout(() => {
-                leftDoor.style.transform = "rotateY(-120deg)";
-                rightDoor.style.transform = "rotateY(120deg)";
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 hindi-font">राष्ट्रीय लोकतांत्रिक पार्टी</h3>
+                    <p class="text-gray-400 mb-4 hindi-font">
+                        जनता की आवाज, जनता की ताकत। राजस्थान के किसानों, मजदूरों और युवाओं के हक की लड़ाई।
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/profile.php?id=61566574767972" target="_blank" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/pc_bmr_12/" target="_blank" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://x.com/Drprakash9512" target="_blank" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://youtube.com/@aijangalumanch?si=-8gl_MBEI2ezIGu9" target="_blank" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
                 
-                setTimeout(() => {
-                    doorAnimation.style.opacity = "0";
-                    setTimeout(() => {
-                        doorAnimation.style.display = "none";
-                        mainContent.style.display = "block";
-                        setTimeout(() => {
-                            mainContent.style.opacity = "1";
-                        }, 100);
-                    }, 1000);
-                }, 2000);
-            }, 1000);
+                <div>
+                    <h3 class="text-xl font-bold mb-4 hindi-font">लिंक्स</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white hindi-font">होम</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white hindi-font">पार्टी के बारे में</a></li>
+                        <li><a href="#leaders" class="text-gray-400 hover:text-white hindi-font">नेता</a></li>
+                        <li><a href="#gallery" class="text-gray-400 hover:text-white hindi-font">गैलरी</a></li>
+                        <li><a href="#news" class="text-gray-400 hover:text-white hindi-font">समाचार</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white hindi-font">संपर्क</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4 hindi-font">संपर्क</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-gray-400 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <span class="text-gray-400 hindi-font">RLP हेड ऑफिस, बेनीवाल भवन, बाड़मेर, राजस्थान</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-gray-400 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                            </svg>
+                            <span class="text-gray-400 hindi-font">+91 98765 43210</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-gray-400 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            <span class="text-gray-400">contact@rlp.org.in</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4 hindi-font">न्यूज़लेटर</h3>
+                    <p class="text-gray-400 mb-4 hindi-font">हमारे नवीनतम अपडेट और समाचार प्राप्त करने के लिए सदस्यता लें।</p>
+                    <form class="flex">
+                        <input type="email" placeholder="आपका ईमेल" class="px-4 py-2 w-full rounded-l-md focus:outline-none text-gray-800">
+                        <button type="submit" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-r-md hindi-font">सब्सक्राइब</button>
+                    </form>
+                    <button id="footerExplorerBtn" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md mt-4 hindi-font">एक्सप्लोरर आरएलपी</button>
+                </div>
+            </div>
             
-            // Initialize all functionality
-            initMobileMenu();
-            initMembership();
-            initComments();
-            initContactForm();
-            initProductButtons();
-            initSearch();
+            <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0 hindi-font">© 2025 राष्ट्रीय लोकतांत्रिक पार्टी. सर्वाधिकार सुरक्षित.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white hindi-font">गोपनीयता नीति</a>
+                    <a href="#" class="text-gray-400 hover:text-white hindi-font">उपयोग की शर्तें</a>
+                    <button id="adminLoginBtn" class="text-gray-400 hover:text-white hindi-font">व्यवस्थापक लॉगिन</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script>
+        // Function to toggle visibility of hidden content
+        function toggleSection(containerId, buttonId, itemCount) {
+            const button = document.getElementById(buttonId);
+            const container = document.getElementById(containerId);
+            const hiddenItems = container.querySelectorAll('.hidden-content');
             
-            // Initialize sample data
-            initializeSampleData();
+            let allVisible = false;
+            
+            button.addEventListener('click', function() {
+                if (allVisible) {
+                    // Hide extra items
+                    hiddenItems.forEach((item, index) => {
+                        if (index >= itemCount) {
+                            item.classList.add('hidden-content');
+                        }
+                    });
+                    button.textContent = button.getAttribute('data-show-text');
+                    allVisible = false;
+                } else {
+                    // Show all items
+                    hiddenItems.forEach(item => {
+                        item.classList.remove('hidden-content');
+                    });
+                    button.textContent = button.getAttribute('data-hide-text');
+                    allVisible = true;
+                }
+            });
+            
+            // Set initial text
+            button.setAttribute('data-show-text', button.textContent);
+            button.setAttribute('data-hide-text', 'कम देखें');
+        }
+        
+        // Initialize section toggles
+        toggleSection('video-container', 'showMoreVideos', 3);
+        toggleSection('gallery-container', 'showMoreGallery', 4);
+        toggleSection('news-container', 'showMoreNews', 2);
+        
+        // RLP Explorer functionality
+        const explorerBtn = document.getElementById('explorerBtn');
+        const mobileExplorerBtn = document.getElementById('mobileExplorerBtn');
+        const footerExplorerBtn = document.getElementById('footerExplorerBtn');
+        const closeExplorer = document.getElementById('close-explorer');
+        const explorerModal = document.getElementById('explorer-modal');
+        const explorerTabs = document.querySelectorAll('.explorer-tab');
+        
+        // Open explorer modal
+        function openExplorer() {
+            explorerModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Close explorer modal
+        function closeExplorerModal() {
+            explorerModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Switch tabs
+        function switchTab(tabName) {
+            // Hide all sections
+            document.querySelectorAll('.explorer-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(`${tabName}-section`).classList.add('active');
+            
+            // Update active tab
+            explorerTabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+        
+        // Event listeners
+        explorerBtn.addEventListener('click', openExplorer);
+        mobileExplorerBtn.addEventListener('click', openExplorer);
+        footerExplorerBtn.addEventListener('click', openExplorer);
+        closeExplorer.addEventListener('click', closeExplorerModal);
+        
+        explorerTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabName = this.getAttribute('data-tab');
+                switchTab(tabName);
+            });
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target === explorerModal) {
+                closeExplorerModal();
+            }
+        });
+        
+        // Admin Panel functionality
+        const adminLoginBtn = document.getElementById('adminLoginBtn');
+        const closeAdmin = document.getElementById('close-admin');
+        const adminModal = document.getElementById('admin-modal');
+        const adminTabs = document.querySelectorAll('.admin-tab');
+        const backButtons = document.querySelectorAll('.back-button');
+        
+        // Open admin modal
+        function openAdmin() {
+            adminModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Close admin modal
+        function closeAdminModal() {
+            adminModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Switch admin tabs
+        function switchAdminTab(tabName) {
+            // Hide all sections
+            document.querySelectorAll('.admin-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(`${tabName}-section`).classList.add('active');
+            
+            // Update active tab
+            adminTabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+        
+        // Event listeners
+        adminLoginBtn.addEventListener('click', openAdmin);
+        closeAdmin.addEventListener('click', closeAdminModal);
+        
+        adminTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabName = this.getAttribute('data-tab');
+                switchAdminTab(tabName);
+            });
+        });
+        
+        backButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Show the first tab when back is clicked
+                document.querySelectorAll('.admin-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                document.querySelector('.admin-section').classList.add('active');
+                
+                adminTabs.forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                document.querySelector('.admin-tab').classList.add('active');
+            });
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target === adminModal) {
+                closeAdminModal();
+            }
         });
         
         // Mobile menu toggle
-        function initMobileMenu() {
-            const mobileToggle = document.querySelector('.mobile-toggle');
-            const navMenu = document.querySelector('.nav-menu');
-            
-            mobileToggle.addEventListener('click', () => {
-                navMenu.classList.toggle('active');
-            });
-        }
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
         
-        // Initialize search functionality
-        function initSearch() {
-            const searchBtn = document.getElementById('search-btn');
-            const globalSearch = document.getElementById('global-search');
-            
-            searchBtn.addEventListener('click', () => {
-                performSearch(globalSearch.value);
-            });
-            
-            globalSearch.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    performSearch(globalSearch.value);
-                }
-            });
-        }
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
         
-        // Membership form functionality
-        function initMembership() {
-            const registerBtn = document.getElementById('register-btn');
-            const downloadCardBtn = document.getElementById('download-card');
-            
-            registerBtn.addEventListener('click', function() {
-                const name = document.getElementById('name').value;
-                const email = document.getElementById('email').value;
-                const phone = document.getElementById('phone').value;
-                const address = document.getElementById('address').value;
-                
-                if (!name || !email || !phone || !address) {
-                    document.getElementById('membership-message').textContent = 'कृपया सभी फ़ील्ड भरें';
-                    document.getElementById('membership-message').className = 'message error';
-                    document.getElementById('membership-message').style.display = 'block';
-                    return;
-                }
-                
-                const uniqueId = 'RLP' + Math.floor(1000 + Math.random() * 9000);
-                
-                const memberData = {
-                    name,
-                    email,
-                    phone,
-                    address,
-                    id: uniqueId,
-                    date: new Date().toLocaleDateString('hi-IN')
-                };
-                
-                const existingMembers = JSON.parse(localStorage.getItem('rlp_members')) || [];
-                existingMembers.push(memberData);
-                localStorage.setItem('rlp_members', JSON.stringify(existingMembers));
-                
-                document.getElementById('card-name').textContent = name;
-                document.getElementById('card-id').textContent = 'आईडी: ' + uniqueId;
-                document.getElementById('membership-card-container').style.display = 'block';
-                
-                document.getElementById('membership-message').textContent = 'सदस्यता सफलतापूर्वक पंजीकृत हो गई!';
-                document.getElementById('membership-message').className = 'message success';
-                document.getElementById('membership-message').style.display = 'block';
-                
-                setTimeout(() => {
-                    document.getElementById('membership-card-container').scrollIntoView({ behavior: 'smooth' });
-                }, 500);
-                
-                // Show sync indicator
-                showSyncIndicator();
-            });
-            
-            // Membership card download functionality
-            downloadCardBtn.addEventListener('click', function() {
-                const card = document.getElementById('card-to-download');
-                html2canvas(card).then(canvas => {
-                    const imgData = canvas.toDataURL('image/png');
-                    const link = document.createElement('a');
-                    link.href = imgData;
-                    link.download = 'rlp-membership-card.png';
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                });
-            });
-        }
-        
-        // Comment form functionality
-        function initComments() {
-            const submitCommentBtn = document.getElementById('submit-comment');
-            
-            submitCommentBtn.addEventListener('click', function() {
-                const name = document.getElementById('comment-name').value;
-                const text = document.getElementById('comment-text').value;
-                
-                if (!name || !text) {
-                    document.getElementById('comment-message').textContent = 'कृपया नाम और टिप्पणी दोनों भरें';
-                    document.getElementById('comment-message').className = 'message error';
-                    document.getElementById('comment-message').style.display = 'block';
-                    return;
-                }
-                
-                const newComment = document.createElement('div');
-                newComment.className = 'comment';
-                
-                const avatarLetter = name.charAt(0).toUpperCase();
-                const dateStr = new Date().toLocaleDateString('hi-IN');
-                
-                newComment.innerHTML = `
-                    <div class="comment-header">
-                        <div class="comment-avatar">${avatarLetter}</div>
-                        <div class="comment-author">${name}</div>
-                        <div class="comment-date">${dateStr}</div>
-                    </div>
-                    <div class="comment-content">${text}</div>
-                `;
-                
-                document.getElementById('comments-list').prepend(newComment);
-                
-                const commentData = {
-                    name: name,
-                    text: text,
-                    date: dateStr
-                };
-                
-                const existingComments = JSON.parse(localStorage.getItem('rlp_comments')) || [];
-                existingComments.unshift(commentData);
-                localStorage.setItem('rlp_comments', JSON.stringify(existingComments));
-                
-                document.getElementById('comment-name').value = '';
-                document.getElementById('comment-text').value = '';
-                
-                document.getElementById('comment-message').textContent = 'आपकी टिप्पणी सफलतापूर्वक जमा कर दी गई है!';
-                document.getElementById('comment-message').className = 'message success';
-                document.getElementById('comment-message').style.display = 'block';
-                
-                // Show sync indicator
-                showSyncIndicator();
-            });
-        }
-        
-        // Contact form functionality with EmailJS
-        function initContactForm() {
-            const contactForm = document.getElementById('contact-form');
-            const contactMessage = document.getElementById('contact-message');
-            
-            contactForm.addEventListener('submit', function(e) {
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 
-                const name = document.getElementById('contact-name').value;
-                const email = document.getElementById('contact-email').value;
-                const subject = document.getElementById('contact-subject').value;
-                const message = document.getElementById('contact-message').value;
-                
-                if (!name || !email || !subject || !message) {
-                    contactMessage.textContent = 'कृपया सभी फ़ील्ड भरें';
-                    contactMessage.className = 'message error';
-                    contactMessage.style.display = 'block';
-                    return;
-                }
-                
-                contactMessage.textContent = 'आपका संदेश भेजा जा रहा है...';
-                contactMessage.className = 'message success';
-                contactMessage.style.display = 'block';
-                
-                // Send email using EmailJS
-                emailjs.send("service_vgtwm6r", "template_3u6w0qd", {
-                    from_name: name,
-                    from_email: email,
-                    subject: subject,
-                    message: message
-                })
-                .then(function(response) {
-                    contactMessage.textContent = 'आपका संदेश सफलतापूर्वक भेज दिया गया है!';
-                    contactMessage.className = 'message success';
-                    contactForm.reset();
-                    
-                    // Show sync indicator
-                    showSyncIndicator();
-                }, function(error) {
-                    contactMessage.textContent = 'संदेश भेजने में त्रुटि हुई। कृपया बाद में पुनः प्रयास करें।';
-                    contactMessage.className = 'message error';
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
                 });
+                
+                // Close mobile menu if open
+                if(!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
             });
-        }
+        });
         
-        // Product buttons functionality
-        function initProductButtons() {
-            // This can be expanded as needed
-        }
-        
-        // Show sync indicator
-        function showSyncIndicator() {
-            syncIndicator.classList.add('show');
-            setTimeout(() => {
-                syncIndicator.classList.remove('show');
-            }, 3000);
-        }
-        
-        // Initialize with sample data
-        function initializeSampleData() {
-            // Initialize comments
-            if (!localStorage.getItem('rlp_comments')) {
-                const comments = [
-                    {
-                        name: "रमेश कुमार",
-                        text: "RLP हमारे क्षेत्र के विकास के लिए अच्छा काम कर रही है। युवाओं के लिए अच्छे कार्यक्रम हैं।",
-                        date: "22 जून 2025"
-                    },
-                    {
-                        name: "सीमा शर्मा",
-                        text: "किसानों की समस्याओं को हल करने के लिए धन्यवाद। हम आपके साथ हैं!",
-                        date: "20 जून 2025"
-                    }
-                ];
-                localStorage.setItem('rlp_comments', JSON.stringify(comments));
-            }
-        }
+        // Initialize Lightbox
+        lightbox.option({
+            'resizeDuration': 200,
+            'wrapAround': true,
+            'albumLabel': "छवि %1 का %2"
+        });
     </script>
 </body>
-</html>
+                            </html>
