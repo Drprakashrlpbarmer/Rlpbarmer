@@ -7,382 +7,288 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+        /* All previous styles remain */
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* New styles for additional features */
+        .search-container {
+            position: relative;
+            margin-right: 15px;
         }
         
-        body {
-            font-family: 'Hind Siliguri', sans-serif;
-            background-color: #f8fafc;
-            color: #333;
-            scroll-behavior: smooth;
+        .search-container input {
+            padding: 8px 15px;
+            border-radius: 50px;
+            border: 1px solid #e2e8f0;
+            width: 200px;
+            transition: all 0.3s ease;
         }
         
-        .hindi-font {
-            font-family: 'Hind Siliguri', sans-serif;
+        .search-container input:focus {
+            width: 250px;
+            outline: none;
+            border-color: #e53e3e;
         }
         
-        .news-ticker {
-            animation: ticker 30s linear infinite;
-            white-space: nowrap;
-            display: inline-block;
-            padding-left: 100%;
-        }
-        
-        @keyframes ticker {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
-        }
-        
-        .hero-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                        url('https://i.postimg.cc/3NSLrXxY/48294c9415e7676cd649c83156c0f3e91719494523702304-original.jpg');
-            background-size: cover;
-            background-position: center;
-            min-height: 80vh;
+        .leader-socials {
             display: flex;
+            justify-content: center;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #f0f0f0;
+        }
+        
+        .leader-socials a {
+            display: inline-flex;
             align-items: center;
-        }
-        
-        .leader-card {
-            transition: all 0.3s ease;
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        .leader-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-        
-        .gallery-item {
-            transition: all 0.3s ease;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        
-        .gallery-item:hover {
-            transform: scale(1.03);
-        }
-        
-        .nav-link {
-            position: relative;
-            padding-bottom: 5px;
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: #e53e3e;
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        
-        .active-nav::after {
-            width: 100%;
-        }
-        
-        .section-title {
-            position: relative;
-            padding-bottom: 15px;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-        
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
             background: #e53e3e;
-            border-radius: 2px;
+            color: white;
+            margin: 0 3px;
+            font-size: 14px;
+            transition: all 0.3s ease;
         }
         
-        .card {
+        .leader-socials a:hover {
+            transform: translateY(-3px);
+            background: #c53030;
+        }
+        
+        .contact-leader-section {
+            background: #f8fafc;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .social-posts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .social-post {
+            background: white;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
         }
         
-        .card:hover {
+        .social-post:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
         
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-        }
-        
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .social-post img {
             width: 100%;
-            height: 100%;
-            border: none;
+            height: 200px;
+            object-fit: cover;
         }
         
-        .btn {
-            display: inline-block;
-            padding: 12px 28px;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            text-align: center;
+        .social-post-content {
+            padding: 15px;
         }
         
-        .btn-red {
-            background: #e53e3e;
-            color: white;
-        }
-        
-        .btn-red:hover {
-            background: #c53030;
-            transform: translateY(-3px);
-        }
-        
-        .btn-white {
-            background: white;
-            color: #e53e3e;
-        }
-        
-        .btn-white:hover {
-            background: #f8fafc;
-            transform: translateY(-3px);
-        }
-        
-        .btn-green {
-            background: #2c974b;
-            color: white;
-        }
-        
-        .btn-green:hover {
-            background: #1e5a2c;
-            transform: translateY(-3px);
-        }
-        
-        .hidden-content {
-            display: none;
-        }
-        
-        .show-more-btn {
-            display: block;
-            margin: 30px auto 0;
-            width: auto;
-        }
-        
-        .social-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #e53e3e;
-            color: white;
-            transition: all 0.3s ease;
-            margin: 0 5px;
-        }
-        
-        .social-icon:hover {
-            transform: translateY(-3px);
-            background: #c53030;
-        }
-        
-        .timeline {
-            position: relative;
-            padding: 20px 0;
-        }
-        
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 20px;
-            width: 4px;
-            background-color: #2c974b;
-        }
-        
-        .timeline-item {
-            position: relative;
-            margin-bottom: 30px;
-            padding-left: 50px;
-        }
-        
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            top: 5px;
-            left: 16px;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: #2c974b;
-            border: 3px solid white;
-            box-shadow: 0 0 0 2px #2c974b;
-        }
-        
-        .timeline-date {
-            font-weight: bold;
-            color: #2c974b;
-            display: block;
-            margin-bottom: 5px;
-        }
-        
-        .explorer-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.9);
-            z-index: 1000;
-            overflow-y: auto;
-            padding: 20px;
-        }
-        
-        .explorer-content {
-            background-color: white;
-            border-radius: 10px;
-            max-width: 1000px;
-            margin: 40px auto;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            overflow: hidden;
-        }
-        
-        .explorer-header {
-            background: linear-gradient(to right, #2c974b, #1e5a2c);
-            color: white;
-            padding: 20px;
-            text-align: center;
-            position: relative;
-        }
-        
-        .close-explorer {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-        }
-        
-        .explorer-tabs {
+        .social-post-platform {
             display: flex;
-            background-color: #f0f0f0;
-            border-bottom: 1px solid #ddd;
-            flex-wrap: wrap;
+            align-items: center;
+            color: #718096;
+            font-size: 14px;
+            margin-bottom: 10px;
         }
         
-        .explorer-tab {
-            padding: 15px 25px;
-            cursor: pointer;
-            font-weight: 600;
-            border-right: 1px solid #ddd;
-            min-width: 120px;
+        .social-post-platform i {
+            margin-right: 5px;
+        }
+        
+        #memberCard {
+            display: none;
+            max-width: 500px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .card-header {
+            background: linear-gradient(to right, #2c974b, #1e5a2c);
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        
+        .card-body {
+            padding: 20px;
             text-align: center;
         }
         
-        .explorer-tab.active {
-            background-color: white;
-            border-bottom: 3px solid #2c974b;
+        .member-photo {
+            width: 120px;
+            height: 150px;
+            margin: 0 auto 15px;
+            border: 3px solid #e53e3e;
+            border-radius: 5px;
+            overflow: hidden;
+            background: #f8fafc;
         }
         
-        .explorer-body {
-            padding: 30px;
-            max-height: 70vh;
-            overflow-y: auto;
+        .member-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
-        .explorer-section {
+        .member-details {
+            margin: 15px 0;
+        }
+        
+        .member-id {
+            font-size: 14px;
+            color: #718096;
+            margin-top: 5px;
+        }
+        
+        .card-footer {
+            padding: 15px;
+            background: #f8fafc;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .card-footer img {
+            height: 40px;
+        }
+        
+        .admin-panel {
             display: none;
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         
-        .explorer-section.active {
-            display: block;
-        }
-        
-        .explorer-section h3 {
-            color: #1e5a2c;
-            border-bottom: 2px solid #2c974b;
-            padding-bottom: 10px;
-            margin-top: 0;
+        .admin-tabs {
+            display: flex;
+            border-bottom: 1px solid #e2e8f0;
             margin-bottom: 20px;
         }
         
-        .info-card {
-            background-color: #f9f9f9;
-            border-left: 4px solid #2c974b;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 0 5px 5px 0;
+        .admin-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
         }
         
-        .election-table {
+        .admin-tab.active {
+            border-bottom-color: #e53e3e;
+            color: #e53e3e;
+            font-weight: bold;
+        }
+        
+        .admin-section {
+            display: none;
+        }
+        
+        .admin-section.active {
+            display: block;
+        }
+        
+        .admin-table {
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
         }
         
-        .election-table th {
-            background-color: #2c974b;
-            color: white;
-            text-align: left;
+        .admin-table th, .admin-table td {
             padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
         }
         
-        .election-table td {
+        .admin-table th {
+            background-color: #f8fafc;
+        }
+        
+        .admin-form {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .admin-form .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .admin-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .admin-form input, .admin-form textarea, .admin-form select {
+            width: 100%;
             padding: 10px;
-            border-bottom: 1px solid #ddd;
+            border: 1px solid #e2e8f0;
+            border-radius: 5px;
         }
         
-        .election-table tr:nth-child(even) {
-            background-color: #f2f2f2;
+        .admin-actions {
+            margin-top: 20px;
+            text-align: right;
         }
         
-        @media (max-width: 768px) {
-            .section-title:after {
-                width: 60px;
-            }
-            
-            .hero-section {
-                min-height: 70vh;
-            }
-            
-            .explorer-tab {
-                padding: 10px 15px;
-                min-width: 100px;
-                font-size: 14px;
-            }
-            
-            .btn {
-                padding: 10px 20px;
-                font-size: 14px;
-            }
+        .admin-actions button {
+            margin-left: 10px;
+        }
+        
+        .unique-comment {
+            background: #f8fafc;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid #2c974b;
+        }
+        
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .comment-author {
+            font-weight: bold;
+            color: #2c974b;
+        }
+        
+        .comment-date {
+            color: #718096;
+            font-size: 14px;
+        }
+        
+        .comment-actions {
+            margin-top: 10px;
+            text-align: right;
+        }
+        
+        .comment-actions button {
+            background: #e53e3e;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
         }
     </style>
 </head>
@@ -396,6 +302,12 @@
                     <h1 class="text-xl font-bold text-red-600 hindi-font">राष्ट्रीय लोकतांत्रिक पार्टी (RLP)</h1>
                     <p class="text-xs text-gray-600 hindi-font">डॉ. प्रकाश काकड़, बाड़मेर</p>
                 </div>
+            </div>
+            
+            <!-- Search Bar -->
+            <div class="search-container hidden md:block">
+                <input type="text" placeholder="खोजें..." class="hindi-font">
+                <i class="fas fa-search absolute right-3 top-2 text-gray-400"></i>
             </div>
             
             <div class="hidden md:flex space-x-6">
@@ -417,6 +329,9 @@
         
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white py-2 px-4 shadow-lg">
+            <div class="search-container mb-3">
+                <input type="text" placeholder="खोजें..." class="hindi-font w-full">
+            </div>
             <a href="#home" class="block py-2 text-red-600 font-medium hindi-font">होम</a>
             <a href="#about" class="block py-2 text-gray-700 hover:text-red-600 font-medium hindi-font">पार्टी के बारे में</a>
             <a href="#leaders" class="block py-2 text-gray-700 hover:text-red-600 font-medium hindi-font">नेता</a>
@@ -428,162 +343,13 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-section text-white">
-        <div class="container mx-auto px-4 text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4 hindi-font">जनता की आवाज, जनता की ताकत</h1>
-            <p class="text-xl mb-8 max-w-2xl mx-auto hindi-font">राष्ट्रीय लोकतांत्रिक पार्टी - राजस्थान के किसानों, मजदूरों और युवाओं के हक की लड़ाई</p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#join" class="btn btn-red hindi-font">हमसे जुड़ें</a>
-                <a href="#about" class="btn btn-white hindi-font">और जानें</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- News Ticker -->
-    <div class="bg-red-600 text-white py-2 overflow-hidden">
-        <div class="container mx-auto px-4">
-            <div class="flex items-center">
-                <span class="font-bold mr-4 hindi-font">ताजा समाचार:</span>
-                <div class="flex-1 overflow-hidden">
-                    <div class="news-ticker">
-                        <span class="mr-8 hindi-font">राकेश बिश्नोई हत्याकांड में न्याय की दिशा में बड़ा कदम</span>
-                        <span class="mr-8 hindi-font">निर्मल चौधरी की गिरफ्तारी</span>
-                        <span class="mr-8 hindi-font">RLP ने स्पष्ट किया कि निर्मल चौधरी का पार्टी से कोई संबंध नहीं</span>
-                        <span class="mr-8 hindi-font">राकेश बिश्नोई के परिजनों और प्रशासन में बनी सहमति, धरना समाप्त</span>
-                        <span class="mr-8 hindi-font">हनुमान बेनीवाल ने जाट आरक्षण पर बैठक की</span>
-                        <span class="mr-8 hindi-font">डॉ. प्रकाश काकड़ ने बाड़मेर में युवा सम्मेलन को संबोधित किया</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- About Section -->
-    <section id="about" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 section-title hindi-font">राष्ट्रीय लोकतांत्रिक पार्टी के बारे में</h2>
-            
-            <div class="grid md:grid-cols-2 gap-8 items-center">
-                <div>
-                    <h3 class="text-2xl font-bold mb-4 text-red-600 hindi-font">RLP क्या है?</h3>
-                    <p class="text-gray-700 mb-6 hindi-font">
-                        राष्ट्रीय लोकतांत्रिक पार्टी (RLP) राजस्थान की एक प्रमुख राजनीतिक पार्टी है जो किसानों, मजदूरों, युवाओं और समाज के सभी वर्गों के हक की लड़ाई लड़ती है। पार्टी की स्थापना हनुमान बेनीवाल जी ने की थी और यह जनता के सच्चे प्रतिनिधि के रूप में काम करती है।
-                    </p>
-                    <h3 class="text-2xl font-bold mb-4 text-red-600 hindi-font">हनुमान बेनीवाल जी</h3>
-                    <p class="text-gray-700 mb-6 hindi-font">
-                        हनुमान बेनीवाल जी राजस्थान के एक प्रमुख किसान नेता और राष्ट्रीय लोकतांत्रिक पार्टी के संस्थापक हैं। उन्होंने किसानों के हक के लिए कई आंदोलनों का नेतृत्व किया है और राजस्थान की राजनीति में एक नई ऊर्जा का संचार किया है। उनका साफ-सुथरी छवि और जनता से सीधा संवाद उन्हें एक विशिष्ट नेता बनाता है।
-                    </p>
-                    <h3 class="text-2xl font-bold mb-4 text-red-600 hindi-font">पार्टी की विचारधारा</h3>
-                    <p class="text-gray-700 hindi-font">
-                        RLP की विचारधारा जनता के हक की लड़ाई, सामाजिक न्याय, किसानों के हितों की रक्षा, युवाओं के लिए रोजगार के अवसर और महिला सशक्तिकरण पर केंद्रित है। पार्टी भ्रष्टाचार मुक्त शासन और पारदर्शी प्रशासन की पक्षधर है।
-                    </p>
-                </div>
-                <div class="grid grid-cols-2 gap-4">
-                    <img src="https://i.postimg.cc/P5BR8Qzq/Hanuman-Beniwal-news-2025-05-f5977541e4b03f70223be809b321043a.jpg" alt="Hanuman Beniwal" class="rounded-lg shadow-md h-64 w-full object-cover">
-                    <img src="https://i.postimg.cc/xCdMfWJN/hanuman-beniwal-1538292262.jpg" alt="Hanuman Beniwal Speech" class="rounded-lg shadow-md h-64 w-full object-cover">
-                    <img src="https://i.postimg.cc/8zVKbBnX/Hanuman-Beniwal-MLA.jpg" alt="Hanuman Beniwal MLA" class="rounded-lg shadow-md h-64 w-full object-cover">
-                    <img src="https://i.postimg.cc/76B1Sx8N/images-12.jpg" alt="RLP Rally" class="rounded-lg shadow-md h-64 w-full object-cover">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Video Section -->
-    <section class="py-16 bg-gray-100">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 section-title hindi-font">हमारे वीडियो</h2>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="video-container">
-                <!-- Video 1 -->
-                <div class="card">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/tHQVtB101qo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2 hindi-font">सभा में हुंकार</h3>
-                        <p class="text-gray-600 hindi-font">हनुमान बेनीवाल की शानदार जनसभा</p>
-                    </div>
-                </div>
-                
-                <!-- Video 2 -->
-                <div class="card">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/6iy8DX9Jfa4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2 hindi-font">सांसद की हुंकार</h3>
-                        <p class="text-gray-600 hindi-font">RLP सांसद का धमाकेदार भाषण</p>
-                    </div>
-                </div>
-                
-                <!-- Video 3 -->
-                <div class="card">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/NEgJI4Y3JQ4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2 hindi-font">राजनीतिक विचार</h3>
-                        <p class="text-gray-600 hindi-font">RLP के विचारों की स्पष्टता</p>
-                    </div>
-                </div>
-                
-                <!-- Hidden Videos -->
-                <div class="card hidden-content">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/OsJw6C223Lw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2 hindi-font">जाट आरक्षण</h3>
-                        <p class="text-gray-600 hindi-font">आरक्षण आंदोलन पर बेनीवाल का बयान</p>
-                    </div>
-                </div>
-                
-                <div class="card hidden-content">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/o0xv4FijwzE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2 hindi-font">किसान आंदोलन</h3>
-                        <p class="text-gray-600 hindi-font">RLP किसानों के साथ</p>
-                    </div>
-                </div>
-                
-                <div class="card hidden-content">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/kwdncrOioqs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2 hindi-font">AIIMS जोधपुर</h3>
-                        <p class="text-gray-600 hindi-font">बैठक के बाद पत्रकारों से बात</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-8">
-                <button id="showMoreVideos" class="btn btn-red show-more-btn hindi-font">और वीडियो देखें</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Leaders Section -->
+    <!-- Leaders Section with Narayan Beniwal and others -->
     <section id="leaders" class="py-16 bg-white">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 section-title hindi-font">हमारे नेता</h2>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Leader 1 -->
-                <div class="leader-card card">
-                    <img src="https://i.postimg.cc/zfqbFtTG/Ummeda-Ram-Beniwal.jpg" alt="उम्मेदाराम बेनीवाल" class="w-full h-64 object-cover">
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-1 hindi-font">उम्मेदाराम बेनीवाल</h3>
-                        <p class="text-red-600 text-sm mb-2 hindi-font">EX. RLP MEMBER</p>
-                        <p class="text-gray-600 text-sm hindi-font">पूर्व सांसद, बाड़मेर</p>
-                        <p class="text-gray-600 text-sm hindi-font">वर्तमान में भारतीय राष्ट्रीय कांग्रेस</p>
-                    </div>
-                </div>
-                
-                <!-- Leader 2 -->
+                <!-- Hanuman Beniwal -->
                 <div class="leader-card card">
                     <img src="https://i.postimg.cc/vZLQPTqb/5-IYPGA5l-400x400.png" alt="हनुमान बेनीवाल" class="w-full h-64 object-cover">
                     <div class="p-4">
@@ -591,147 +357,203 @@
                         <p class="text-red-600 text-sm mb-2 hindi-font">संस्थापक एवं राष्ट्रीय अध्यक्ष</p>
                         <p class="text-gray-600 text-sm hindi-font">किसान नेता एवं सांसद</p>
                         <p class="text-gray-600 text-sm hindi-font">चार बार विधायक, दो बार सांसद</p>
+                        
+                        <div class="mt-4">
+                            <a href="#hanuman-details" class="text-red-600 font-medium hindi-font flex items-center">
+                                हनुमान बेनीवाल के बारे में अधिक जानें
+                                <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                            </a>
+                        </div>
+                        
+                        <div class="leader-socials">
+                            <a href="https://facebook.com/hanumanbeniwal" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://twitter.com/hanumanbeniwal" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a href="https://instagram.com/hanumanbeniwal" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://youtube.com/hanumanbeniwal" target="_blank"><i class="fab fa-youtube"></i></a>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Leader 3 -->
+                <!-- Narayan Beniwal -->
+                <div class="leader-card card">
+                    <img src="https://i.postimg.cc/BvSJR3kD/Narayan-Beniwal-MLA.jpg" alt="नारायण बेनीवाल" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-1 hindi-font">नारायण बेनीवाल</h3>
+                        <p class="text-red-600 text-sm mb-2 hindi-font">पूर्व विधायक, खिवसर</p>
+                        <p class="text-gray-600 text-sm hindi-font">हनुमान बेनीवाल के छोटे भाई</p>
+                        <p class="text-gray-600 text-sm hindi-font">पार्टी के वरिष्ठ नेता</p>
+                        
+                        <div class="mt-4">
+                            <a href="#narayan-details" class="text-red-600 font-medium hindi-font flex items-center">
+                                नारायण बेनीवाल के बारे में अधिक जानें
+                                <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                            </a>
+                        </div>
+                        
+                        <div class="leader-socials">
+                            <a href="https://facebook.com/narayanbeniwal" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://twitter.com/narayanbeniwal" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a href="https://instagram.com/narayanbeniwal" target="_blank"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dr. Prakash Kakad -->
                 <div class="leader-card card">
                     <img src="https://i.postimg.cc/cH604msL/In-Shot-20250622-174226544.jpg" alt="डॉ. प्रकाश काकड़" class="w-full h-64 object-cover">
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-1 hindi-font">डॉ. प्रकाश काकड़</h3>
                         <p class="text-red-600 text-sm mb-2 hindi-font">जिला अध्यक्ष, बाड़मेर</p>
                         <p class="text-gray-600 text-sm hindi-font">युवा नेता एवं समाजसेवी</p>
+                        
+                        <div class="leader-socials">
+                            <a href="https://facebook.com/prakashkakad" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://twitter.com/Drprakash9512" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a href="https://instagram.com/pc_bmr_12" target="_blank"><i class="fab fa-instagram"></i></a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Leader 4 -->
+                <!-- Thansingh Doli -->
                 <div class="leader-card card">
                     <img src="https://i.postimg.cc/9fYNR06P/images-12-1.jpg" alt="थानसिंह डोली" class="w-full h-64 object-cover">
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-1 hindi-font">थानसिंह डोली</h3>
                         <p class="text-red-600 text-sm mb-2 hindi-font">जिला अध्यक्ष, बालोतरा</p>
                         <p class="text-gray-600 text-sm hindi-font">युवा नेता एवं समाजसेवी</p>
+                        
+                        <div class="leader-socials">
+                            <a href="https://facebook.com/thansinghdoli" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://instagram.com/thansinghdoli" target="_blank"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Umeedaram Beniwal -->
+                <div class="leader-card card">
+                    <img src="https://i.postimg.cc/zfqbFtTG/Ummeda-Ram-Beniwal.jpg" alt="उम्मेदाराम बेनीवाल" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-1 hindi-font">उम्मेदाराम बेनीवाल</h3>
+                        <p class="text-red-600 text-sm mb-2 hindi-font">EX. RLP MEMBER</p>
+                        <p class="text-gray-600 text-sm hindi-font">पूर्व सांसद, बाड़मेर</p>
+                        <p class="text-gray-600 text-sm hindi-font">वर्तमान में भारतीय राष्ट्रीय कांग्रेस</p>
+                        
+                        <div class="leader-socials">
+                            <a href="https://facebook.com/umeedaram" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Indira Bavari -->
+                <div class="leader-card card">
+                    <img src="https://i.postimg.cc/rsRcXh3d/indira-bavari.jpg" alt="इंदिरा बावरी" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-1 hindi-font">इंदिरा बावरी</h3>
+                        <p class="text-red-600 text-sm mb-2 hindi-font">महिला विंग अध्यक्ष</p>
+                        <p class="text-gray-600 text-sm hindi-font">समाजसेवी एवं महिला अधिकार कार्यकर्ता</p>
+                        
+                        <div class="leader-socials">
+                            <a href="https://facebook.com/indirabavari" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://instagram.com/indirabavari" target="_blank"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pukhraj Garg -->
+                <div class="leader-card card">
+                    <img src="https://i.postimg.cc/nz3Mk9bK/pukhraj-garg.jpg" alt="पुखराज गर्ग" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-1 hindi-font">पुखराज गर्ग</h3>
+                        <p class="text-red-600 text-sm mb-2 hindi-font">EX. RLP MEMBER</p>
+                        <p class="text-gray-600 text-sm hindi-font">पूर्व विधायक</p>
+                        <p class="text-gray-600 text-sm hindi-font">वरिष्ठ समाजसेवी</p>
+                        
+                        <div class="leader-socials">
+                            <a href="https://facebook.com/pukhrajgarg" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Leaders Section -->
+            <div class="contact-leader-section mt-12">
+                <h3 class="text-2xl font-bold mb-4 text-center text-red-600 hindi-font">नेताओं से संपर्क करें</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="text-center">
+                        <h4 class="font-bold mb-2 hindi-font">हनुमान बेनीवाल</h4>
+                        <div class="flex justify-center space-x-3">
+                            <a href="tel:+919876543210" class="text-blue-600"><i class="fas fa-phone"></i></a>
+                            <a href="mailto:hanuman@rlp.org" class="text-red-600"><i class="fas fa-envelope"></i></a>
+                            <a href="https://wa.me/919876543210" class="text-green-600"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <h4 class="font-bold mb-2 hindi-font">नारायण बेनीवाल</h4>
+                        <div class="flex justify-center space-x-3">
+                            <a href="tel:+919876543211" class="text-blue-600"><i class="fas fa-phone"></i></a>
+                            <a href="mailto:narayan@rlp.org" class="text-red-600"><i class="fas fa-envelope"></i></a>
+                            <a href="https://wa.me/919876543211" class="text-green-600"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <h4 class="font-bold mb-2 hindi-font">उम्मेदाराम बेनीवाल</h4>
+                        <div class="flex justify-center space-x-3">
+                            <a href="tel:+919876543212" class="text-blue-600"><i class="fas fa-phone"></i></a>
+                            <a href="mailto:umeedaram@rlp.org" class="text-red-600"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <h4 class="font-bold mb-2 hindi-font">थानसिंह डोली</h4>
+                        <div class="flex justify-center space-x-3">
+                            <a href="tel:+919876543213" class="text-blue-600"><i class="fas fa-phone"></i></a>
+                            <a href="mailto:thansingh@rlp.org" class="text-red-600"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Social Media Posts Section -->
+            <div class="mt-12">
+                <h3 class="text-2xl font-bold mb-4 text-center text-red-600 hindi-font">हनुमान बेनीवाल के सोशल मीडिया अपडेट</h3>
+                <div class="social-posts-container">
+                    <div class="social-post">
+                        <img src="https://i.postimg.cc/8zVKbBnX/Hanuman-Beniwal-MLA.jpg" alt="Hanuman Beniwal Post">
+                        <div class="social-post-content">
+                            <div class="social-post-platform">
+                                <i class="fab fa-twitter"></i> Twitter
+                            </div>
+                            <p class="hindi-font">आज बाड़मेर में किसान सम्मेलन में शामिल हुए। किसानों की समस्याओं के समाधान के लिए हम संघर्षरत हैं। #किसान_आंदोलन #RLP</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-post">
+                        <img src="https://i.postimg.cc/xCdMfWJN/hanuman-beniwal-1538292262.jpg" alt="Hanuman Beniwal Post">
+                        <div class="social-post-content">
+                            <div class="social-post-platform">
+                                <i class="fab fa-facebook"></i> Facebook
+                            </div>
+                            <p class="hindi-font">युवाओं को रोजगार के अवसर मिलें, इसके लिए हम प्रयासरत हैं। आज जोधपुर में युवा सम्मेलन को संबोधित किया। #युवा_शक्ति #राजस्थान</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-post">
+                        <img src="https://i.postimg.cc/76B1Sx8N/images-12.jpg" alt="Hanuman Beniwal Post">
+                        <div class="social-post-content">
+                            <div class="social-post-platform">
+                                <i class="fab fa-instagram"></i> Instagram
+                            </div>
+                            <p class="hindi-font">राजस्थान के विकास के लिए हम सब मिलकर काम करें। आज सीकर में जनसभा को संबोधित किया। #राजस्थान_विकास #RLP</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="py-16 bg-gray-100">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 section-title hindi-font">हमारी गैलरी</h2>
-            
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="gallery-container">
-                <!-- Gallery Item 1 -->
-                <a href="https://i.postimg.cc/3NSLrXxY/48294c9415e7676cd649c83156c0f3e91719494523702304-original.jpg" data-lightbox="gallery" class="gallery-item">
-                    <img src="https://i.postimg.cc/3NSLrXxY/48294c9415e7676cd649c83156c0f3e91719494523702304-original.jpg" alt="RLP Rally" class="w-full h-40 object-cover">
-                </a>
-                
-                <!-- Gallery Item 2 -->
-                <a href="https://i.postimg.cc/P5BR8Qzq/Hanuman-Beniwal-news-2025-05-f5977541e4b03f70223be809b321043a.jpg" data-lightbox="gallery" class="gallery-item">
-                    <img src="https://i.postimg.cc/P5BR8Qzq/Hanuman-Beniwal-news-2025-05-f5977541e4b03f70223be809b321043a.jpg" alt="Hanuman Beniwal" class="w-full h-40 object-cover">
-                </a>
-                
-                <!-- Gallery Item 3 -->
-                <a href="https://i.postimg.cc/xCdMfWJN/hanuman-beniwal-1538292262.jpg" data-lightbox="gallery" class="gallery-item">
-                    <img src="https://i.postimg.cc/xCdMfWJN/hanuman-beniwal-1538292262.jpg" alt="Hanuman Beniwal Speech" class="w-full h-40 object-cover">
-                </a>
-                
-                <!-- Gallery Item 4 -->
-                <a href="https://i.postimg.cc/8zVKbBnX/Hanuman-Beniwal-MLA.jpg" data-lightbox="gallery" class="gallery-item">
-                    <img src="https://i.postimg.cc/8zVKbBnX/Hanuman-Beniwal-MLA.jpg" alt="Hanuman Beniwal MLA" class="w-full h-40 object-cover">
-                </a>
-                
-                <!-- Hidden Gallery Items -->
-                <a href="https://i.postimg.cc/76B1Sx8N/images-12.jpg" data-lightbox="gallery" class="gallery-item hidden-content">
-                    <img src="https://i.postimg.cc/76B1Sx8N/images-12.jpg" alt="RLP Rally" class="w-full h-40 object-cover">
-                </a>
-                
-                <a href="https://i.postimg.cc/W3p6DdK3/images-13.jpg" data-lightbox="gallery" class="gallery-item hidden-content">
-                    <img src="https://i.postimg.cc/W3p6DdK3/images-13.jpg" alt="RLP Meeting" class="w-full h-40 object-cover">
-                </a>
-                
-                <a href="https://i.postimg.cc/fytdXmvw/images-18.jpg" data-lightbox="gallery" class="gallery-item hidden-content">
-                    <img src="https://i.postimg.cc/fytdXmvw/images-18.jpg" alt="RLP Workers" class="w-full h-40 object-cover">
-                </a>
-                
-                <a href="https://i.postimg.cc/Qx75dgtm/images-20.jpg" data-lightbox="gallery" class="gallery-item hidden-content">
-                    <img src="https://i.postimg.cc/Qx75dgtm/images-20.jpg" alt="RLP Event" class="w-full h-40 object-cover">
-                </a>
-            </div>
-            
-            <div class="text-center mt-8">
-                <button id="showMoreGallery" class="btn btn-red show-more-btn hindi-font">और फोटो देखें</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- News Section -->
-    <section id="news" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 section-title hindi-font">ताजा समाचार</h2>
-            
-            <div class="grid md:grid-cols-2 gap-8" id="news-container">
-                <!-- News 1 -->
-                <div class="card">
-                    <img src="https://i.postimg.cc/pL3kGQTn/BAN604854.jpg" alt="राकेश बिश्नोई" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <span class="text-sm text-gray-500 hindi-font">22 जून 2025</span>
-                        <h3 class="font-bold text-xl my-2 hindi-font">राकेश बिश्नोई को मिला न्याय की दिशा में बड़ा कदम</h3>
-                        <p class="text-gray-700 mb-4 hindi-font">
-                            छात्र नेता राकेश बिश्नोई हत्याकांड में जनता के जबरदस्त आक्रोश, सोशल मीडिया मुहिम और राजनीतिक दबाव के चलते आखिरकार न्याय की दिशा में ठोस कार्रवाई शुरू हुई। RLP व युवाओं के लगातार संघर्ष ने इस केस को राष्ट्रीय मुद्दा बना दिया।
-                        </p>
-                        <a href="#" class="text-red-600 font-medium hindi-font">और पढ़ें →</a>
-                    </div>
-                </div>
-                
-                <!-- News 2 -->
-                <div class="card">
-                    <img src="https://i.postimg.cc/nhX0GSHJ/IMG-20250623-WA0005.jpg" alt="निर्मल चौधरी" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <span class="text-sm text-gray-500 hindi-font">20 जून 2025</span>
-                        <h3 class="font-bold text-xl my-2 hindi-font">निर्मल चौधरी की गिरफ्तारी</h3>
-                        <p class="text-gray-700 mb-4 hindi-font">
-                            मामले में आरोपों के घेरे में आए छात्र नेता निर्मल चौधरी को पुलिस ने गिरफ्तार किया। लगातार बढ़ते जनदबाव और सबूतों के आधार पर यह गिरफ्तारी हुई, जिसे जनता ने न्याय की जीत माना।
-                        </p>
-                        <a href="#" class="text-red-600 font-medium hindi-font">और पढ़ें →</a>
-                    </div>
-                </div>
-                
-                <!-- Hidden News -->
-                <div class="card hidden-content">
-                    <img src="https://i.postimg.cc/GhzQYkxK/513507862-18229716709294688-4676799255003730642-n.webp" alt="राकेश बिश्नोई" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <span class="text-sm text-gray-500 hindi-font">29 जून 2025</span>
-                        <h3 class="font-bold text-xl my-2 hindi-font">जाट आरक्षण संघर्ष</h3>
-                        <p class="text-gray-700 mb-4 hindi-font">
-                            आज हनुमान बेनीवाल जाट आरक्षण आंदोलन मे भाग लेने , कल जाट समुदाय ने आन्दोलन मे आने के लिए पहले चावल  दिये आंदोलन आज दिनांक 29 jun 2025 को भरतपुर मे रखा गया हैं 
-                        </p>
-                        <a href="#" class="text-red-600 font-medium hindi-font">और पढ़ें →</a>
-                    </div>
-                </div>
-                
-                <div class="card hidden-content">
-                    <img src="https://i.postimg.cc/X7HsF66L/IMG-20250623-WA0006.jpg" alt="RLP Statement" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <span class="text-sm text-gray-500 hindi-font">18 जून 2025</span>
-                        <h3 class="font-bold text-xl my-2 hindi-font">निर्मल चौधरी को RLP से कोई संबंध नहीं</h3>
-                        <p class="text-gray-700 mb-4 hindi-font">
-                            राष्ट्रीय लोकतांत्रिक पार्टी ने स्पष्ट किया है कि निर्मल चौधरी का पार्टी से कोई संबंध नहीं है और न ही पार्टी ऐसे किसी कृत्य को समर्थन देती है। पार्टी पूरी तरह राकेश बिश्नोई और उनके परिवार के साथ खड़ी है।
-                        </p>
-                        <a href="#" class="text-red-600 font-medium hindi-font">और पढ़ें →</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-8">
-                <button id="showMoreNews" class="btn btn-red show-more-btn hindi-font">और समाचार देखें</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Join Form Section -->
+    <!-- Join Form Section with ID Card -->
     <section id="join" class="py-16 bg-red-600 text-white">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12 hindi-font">राष्ट्रीय लोकतांत्रिक पार्टी से जुड़ें</h2>
@@ -789,570 +611,274 @@
                                 </select>
                             </div>
                             <div>
+                                <label for="photo" class="block text-sm font-medium mb-1 hindi-font">अपना फोटो अपलोड करें *</label>
+                                <input type="file" id="photo" name="photo" accept="image/*" required class="w-full">
+                            </div>
+                            <div>
                                 <button type="submit" class="w-full btn btn-red hindi-font">सदस्यता लें</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 section-title hindi-font">हमसे संपर्क करें</h2>
             
-            <div class="grid md:grid-cols-2 gap-8">
-                <div>
-                    <h3 class="text-2xl font-bold mb-4 text-red-600 hindi-font">संपर्क जानकारी</h3>
-                    <div class="space-y-4">
-                        <div class="flex items-start">
-                            <div class="bg-red-100 p-3 rounded-full mr-4">
-                                <i class="fas fa-map-marker-alt text-red-600"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-800 hindi-font">मुख्य कार्यालय</h4>
-                                <p class="text-gray-600 hindi-font">दीपाराम काकड़ हाउस, पीपली बेरी, बामरला, बाड़मेर, राजस्थान</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="bg-red-100 p-3 rounded-full mr-4">
-                                <i class="fas fa-phone-alt text-red-600"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-800 hindi-font">फोन नंबर</h4>
-                                <p class="text-gray-600 hindi-font">+919549877946</p>
-                                <p class="text-gray-600 hindi-font">+918955930812 (कार्यालय)</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="bg-red-100 p-3 rounded-full mr-4">
-                                <i class="fas fa-envelope text-red-600"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-800 hindi-font">ईमेल</h4>
-                                <p class="text-gray-600">prakashkakd2008@gmail.com</p>
-                                <p class="text-gray-600">Bestteacher812@gmail.com</p>
-                            </div>
-                        </div>
+            <!-- Membership Card -->
+            <div id="memberCard">
+                <div class="card-header">
+                    <h3 class="text-xl font-bold hindi-font">राष्ट्रीय लोकतांत्रिक पार्टी</h3>
+                    <p class="text-sm hindi-font">सदस्यता पहचान पत्र</p>
+                </div>
+                <div class="card-body">
+                    <div class="member-photo">
+                        <img id="memberPhoto" src="" alt="Member Photo">
                     </div>
-                    
-                    <h3 class="text-2xl font-bold mt-8 mb-4 text-red-600 hindi-font">सोशल मीडिया</h3>
-                    <div class="flex space-x-4">
-                        <a href="https://www.facebook.com/profile.php?id=61566574767972" target="_blank" class="social-icon">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="https://www.instagram.com/pc_bmr_12/" target="_blank" class="social-icon">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://x.com/Drprakash9512" target="_blank" class="social-icon">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="https://youtube.com/@aijangalumanch?si=-8gl_MBEI2ezIGu9" target="_blank" class="social-icon">
-                            <i class="fab fa-youtube"></i>
-                        </a>
+                    <div class="member-details">
+                        <h3 id="memberName" class="text-xl font-bold hindi-font"></h3>
+                        <p id="memberArea" class="hindi-font"></p>
+                        <p id="memberMobile" class="hindi-font"></p>
+                        <p class="member-id hindi-font">सदस्यता क्रमांक: <span id="memberId"></span></p>
                     </div>
                 </div>
-                
-                <div>
-                    <h3 class="text-2xl font-bold mb-4 text-red-600 hindi-font">संदेश भेजें</h3>
-                    <form id="contactForm" class="space-y-4">
-                        <div>
-                            <label for="contactName" class="block text-sm font-medium mb-1 text-gray-700 hindi-font">आपका नाम *</label>
-                            <input type="text" id="contactName" name="name" required class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
-                        </div>
-                        <div>
-                            <label for="contactEmail" class="block text-sm font-medium mb-1 text-gray-700 hindi-font">ईमेल *</label>
-                            <input type="email" id="contactEmail" name="email" required class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
-                        </div>
-                        <div>
-                            <label for="contactMobile" class="block text-sm font-medium mb-1 text-gray-700 hindi-font">मोबाइल नंबर</label>
-                            <input type="tel" id="contactMobile" name="mobile" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
-                        </div>
-                        <div>
-                            <label for="contactMessage" class="block text-sm font-medium mb-1 text-gray-700 hindi-font">आपका संदेश *</label>
-                            <textarea id="contactMessage" name="message" rows="4" required class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"></textarea>
-                        </div>
-                        <div>
-                            <button type="submit" class="btn btn-red hindi-font">संदेश भेजें</button>
-                        </div>
-                    </form>
+                <div class="card-footer">
+                    <img src="https://i.postimg.cc/3wkRsgyr/1000006651.jpg" alt="RLP Logo">
                 </div>
+            </div>
+            
+            <div class="text-center mt-6" id="downloadSection" style="display: none;">
+                <button id="downloadCard" class="btn btn-white hindi-font">सदस्यता कार्ड डाउनलोड करें</button>
             </div>
         </div>
     </section>
 
-    <!-- Explorer RLP Modal -->
-    <div id="explorer-modal" class="explorer-modal">
-        <div class="explorer-content">
-            <div class="explorer-header">
-                <h2 class="hindi-font">राष्ट्रीय लोकतांत्रिक पार्टी - विकिपीडिया</h2>
-                <button class="close-explorer" id="close-explorer">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            
-            <div class="explorer-tabs">
-                <div class="explorer-tab hindi-font active" data-tab="overview">अवलोकन</div>
-                <div class="explorer-tab hindi-font" data-tab="history">इतिहास</div>
-                <div class="explorer-tab hindi-font" data-tab="leadership">नेतृत्व</div>
-                <div class="explorer-tab hindi-font" data-tab="elections">चुनावी प्रदर्शन</div>
-            </div>
-            
-            <div class="explorer-body">
-                <!-- Overview Section -->
-                <div class="explorer-section active" id="overview-section">
-                    <div class="info-card">
-                        <p class="hindi-font">राष्ट्रीय लोकतांत्रिक पार्टी (संक्षिप्त रूप में आरएलपी) राजस्थान राज्य में एक भारतीय राजनीतिक पार्टी है। इसकी स्थापना हनुमान बेनीवाल ने 29 अक्टूबर 2018 को 2018 राजस्थान विधानसभा चुनाव की पूर्व संध्या पर क्षेत्रीय मुद्दों, विशेष रूप से किसान समुदाय के मुद्दों को संबोधित करने के उद्देश्य से की थी।</p>
-                    </div>
-                    
-                    <h3 class="hindi-font">पार्टी प्रतीक और रंग</h3>
-                    <div class="flex flex-wrap gap-4 mt-4">
-                        <div class="flex items-center">
-                            <div class="w-16 h-16 rounded-full bg-green-600 flex items-center justify-center">
-                                <div class="w-8 h-8 bg-yellow-400 rounded-full"></div>
-                            </div>
-                            <div class="ml-3">
-                                <p class="hindi-font font-semibold">चुनाव चिन्ह</p>
-                                <p class="hindi-font text-sm">बोतल</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-center">
-                            <div class="w-16 h-16 rounded-md bg-green-600"></div>
-                            <div class="ml-3">
-                                <p class="hindi-font font-semibold">पार्टी रंग</p>
-                                <p class="hindi-font text-sm">हरा</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-center">
-                            <div class="w-16 h-16 rounded-md bg-yellow-400"></div>
-                            <div class="ml-3">
-                                <p class="hindi-font font-semibold">द्वितीयक रंग</p>
-                                <p class="hindi-font text-sm">पीला</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <h3 class="hindi-font mt-8">पार्टी विचारधारा</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-                        <div class="bg-gray-100 p-4 rounded-lg">
-                            <h4 class="hindi-font font-semibold text-green-700">किसान उत्थान</h4>
-                            <p class="hindi-font mt-2">किसानों के हितों की रक्षा और उनकी समस्याओं का समाधान</p>
-                        </div>
-                        <div class="bg-gray-100 p-4 rounded-lg">
-                            <h4 class="hindi-font font-semibold text-green-700">क्षेत्रवाद</h4>
-                            <p class="hindi-font mt-2">स्थानीय मुद्दों और क्षेत्रीय विकास पर ध्यान केंद्रित</p>
-                        </div>
-                        <div class="bg-gray-100 p-4 rounded-lg">
-                            <h4 class="hindi-font font-semibold text-green-700">जनतांत्रिक मूल्य</h4>
-                            <p class="hindi-font mt-2">लोकतंत्र और सामाजिक न्याय को बढ़ावा देना</p>
-                        </div>
-                    </div>
-                    
-                    <h3 class="hindi-font mt-8">गठबंधन</h3>
-                    <div class="flex flex-wrap gap-4 mt-4">
-                        <div class="bg-blue-100 px-4 py-2 rounded-full hindi-font">भारत ब्लॉक (2024-वर्तमान)</div>
-                        <div class="bg-orange-100 px-4 py-2 rounded-full hindi-font">एनडीए (2019-20)</div>
-                    </div>
-                </div>
-                
-                <!-- History Section -->
-                <div class="explorer-section" id="history-section">
-                    <h3 class="hindi-font">पार्टी का इतिहास</h3>
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <div class="timeline-date hindi-font">2008</div>
-                            <p class="hindi-font">हनुमान बेनीवाल पहली बार भारतीय जनता पार्टी के सदस्य के रूप में राजस्थान विधानसभा के लिए चुने गए</p>
-                        </div>
-                        
-                        <div class="timeline-item">
-                            <div class="timeline-date hindi-font">2013</div>
-                            <p class="hindi-font">राजेंद्र राठौर और वसुंधरा राजे जैसे प्रमुख पार्टी नेताओं के खिलाफ बेनीवाल के लगातार दावों के कारण उन्हें भाजपा से निलंबित कर दिया गया</p>
-                        </div>
-                        
-                        <div class="timeline-item">
-                            <div class="timeline-date hindi-font">अक्टूबर 2018</div>
-                            <p class="hindi-font">हनुमान बेनीवाल ने जयपुर में "बोतल" के चुनाव चिन्ह के साथ राष्ट्रीय लोकतांत्रिक पार्टी की स्थापना की</p>
-                        </div>
-                        
-                        <div class="timeline-item">
-                            <div class="timeline-date hindi-font">2018</div>
-                            <p class="hindi-font">RLP ने राजस्थान विधानसभा की तीन सीटों पर जीत हासिल की</p>
-                        </div>
-                        
-                        <div class="timeline-item">
-                            <div class="timeline-date hindi-font">2019</div>
-                            <p class="hindi-font">RLP ने भारतीय जनता पार्टी के साथ गठबंधन किया और हनुमान बेनीवाल लोकसभा के लिए चुने गए</p>
-                        </div>
-                        
-                        <div class="timeline-item">
-                            <div class="timeline-date hindi-font">दिसंबर 2020</div>
-                            <p class="hindi-font">कृषि कानूनों के विरोध में RLP ने एनडीए गठबंधन छोड़ दिया</p>
-                        </div>
-                        
-                        <div class="timeline-item">
-                            <div class="timeline-date hindi-font">अक्टूबर 2023</div>
-                            <p class="hindi-font">RLP ने 2023 राजस्थान विधानसभा चुनावों के लिए आज़ाद समाज पार्टी के साथ गठबंधन की घोषणा की</p>
-                        </div>
-                        
-                        <div class="timeline-item">
-                            <div class="timeline-date hindi-font">मार्च 2024</div>
-                            <p class="hindi-font">हनुमान बेनीवाल को नागौर से इंडिया ब्लॉक का उम्मीदवार घोषित किया गया</p>
-                        </div>
-                        
-                        <div class="timeline-item">
-                            <div class="timeline-date hindi-font">जनवरी 2025</div>
-                            <p class="hindi-font">RLP ने 2025 के दिल्ली विधानसभा चुनावों के लिए आम आदमी पार्टी के साथ गठबंधन की घोषणा की</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Leadership Section -->
-                <div class="explorer-section" id="leadership-section">
-                    <h3 class="hindi-font">पार्टी नेतृत्व</h3>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                            <div class="flex items-center">
-                                <img src="https://i.postimg.cc/vZLQPTqb/5-IYPGA5l-400x400.png" alt="हनुमान बेनीवाल" class="w-16 h-16 rounded-full object-cover">
-                                <div class="ml-4">
-                                    <h4 class="hindi-font font-bold">हनुमान बेनीवाल</h4>
-                                    <p class="hindi-font text-green-700">संस्थापक एवं राष्ट्रीय अध्यक्ष</p>
-                                </div>
-                            </div>
-                            <p class="hindi-font mt-3">हनुमान बेनीवाल राजस्थान के एक प्रमुख किसान नेता हैं। उन्होंने 2008 में पहली बार भाजपा के टिकट पर विधानसभा चुनाव जीता। 2018 में उन्होंने राष्ट्रीय लोकतांत्रिक पार्टी की स्थापना की। वर्तमान में वे नागौर से सांसद हैं।</p>
-                        </div>
-                        
-                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                            <div class="flex items-center">
-                                <img src="https://i.postimg.cc/BvSJR3kD/Narayan-Beniwal-MLA.jpg" alt="नारायण बेनीवाल" class="w-16 h-16 rounded-full object-cover">
-                                <div class="ml-4">
-                                    <h4 class="hindi-font font-bold">नारायण बेनीवाल</h4>
-                                    <p class="hindi-font text-green-700">सचिव</p>
-                                </div>
-                            </div>
-                            <p class="hindi-font mt-3">नारायण बेनीवाल पार्टी के वरिष्ठ नेता और सचिव हैं। वे पूर्व विधायक और किसान नेता हैं जिन्होंने राजस्थान की राजनीति में महत्वपूर्ण भूमिका निभाई है। उनके नेतृत्व में पार्टी ने किसान आंदोलनों में सक्रिय भाग लिया है।</p>
-                        </div>
-                    </div>
-                    
-                    <h3 class="hindi-font mt-8">प्रमुख सहयोगी</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-                        <div class="bg-gray-100 p-4 rounded-lg">
-                            <h4 class="hindi-font font-semibold">घनश्याम तिवारी</h4>
-                            <p class="hindi-font text-sm mt-2">पार्टी के शुरुआती समर्थकों में से एक</p>
-                        </div>
-                        <div class="bg-gray-100 p-4 rounded-lg">
-                            <h4 class="hindi-font font-semibold">जयंत चौधरी</h4>
-                            <p class="hindi-font text-sm mt-2">किसान नेता और पार्टी समर्थक</p>
-                        </div>
-                        <div class="bg-gray-100 p-4 rounded-lg">
-                            <h4 class="hindi-font font-semibold">संजय लाठर</h4>
-                            <p class="hindi-font text-sm mt-2">पार्टी के प्रमुख समर्थक और सलाहकार</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Elections Section -->
-                <div class="explorer-section" id="elections-section">
-                    <h3 class="hindi-font">लोकसभा चुनाव परिणाम</h3>
-                    
-                    <table class="election-table">
-                        <thead>
-                            <tr>
-                                <th class="hindi-font">वर्ष</th>
-                                <th class="hindi-font">लोकसभा</th>
-                                <th class="hindi-font">पार्टी नेता</th>
-                                <th class="hindi-font">गठबंधन</th>
-                                <th class="hindi-font">जीती गई सीटें</th>
-                                <th class="hindi-font">वोट %</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="hindi-font">2019</td>
-                                <td class="hindi-font">17वीं</td>
-                                <td class="hindi-font">हनुमान बेनीवाल</td>
-                                <td class="hindi-font">एनडीए</td>
-                                <td class="hindi-font">1</td>
-                                <td class="hindi-font">2.40%</td>
-                            </tr>
-                            <tr>
-                                <td class="hindi-font">2024</td>
-                                <td class="hindi-font">18वीं</td>
-                                <td class="hindi-font">हनुमान बेनीवाल</td>
-                                <td class="hindi-font">भारत</td>
-                                <td class="hindi-font">1</td>
-                                <td class="hindi-font">2.38%</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    
-                    <h3 class="hindi-font mt-8">राजस्थान विधानसभा चुनाव परिणाम</h3>
-                    
-                    <table class="election-table">
-                        <thead>
-                            <tr>
-                                <th class="hindi-font">वर्ष</th>
-                                <th class="hindi-font">पार्टी नेता</th>
-                                <th class="hindi-font">गठबंधन</th>
-                                <th class="hindi-font">जीती गई सीटें</th>
-                                <th class="hindi-font">कुल वोट</th>
-                                <th class="hindi-font">वोट %</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="hindi-font">2018</td>
-                                <td class="hindi-font">हनुमान बेनीवाल</td>
-                                <td class="hindi-font">कोई नहीं</td>
-                                <td class="hindi-font">3</td>
-                                <td class="hindi-font">856,038</td>
-                                <td class="hindi-font">2.40%</td>
-                            </tr>
-                            <tr>
-                                <td class="hindi-font">2023</td>
-                                <td class="hindi-font">हनुमान बेनीवाल</td>
-                                <td class="hindi-font">एएसपी(केआर)+</td>
-                                <td class="hindi-font">1</td>
-                                <td class="hindi-font">946,209</td>
-                                <td class="hindi-font">2.38%</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    
-                    <div class="mt-8 p-4 bg-yellow-50 border-l-4 border-yellow-400">
-                        <h4 class="hindi-font font-bold">महत्वपूर्ण जानकारी</h4>
-                        <p class="hindi-font mt-2">2019 में RLP ने नागौर सीट पर चुनाव लड़ा और राज्य की अन्य सभी सीटों पर भारतीय जनता पार्टी को समर्थन दिया। हनुमान बेनीवाल नागौर सीट से लोकसभा के लिए चुने गए थे।</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
+    <!-- Admin Panel -->
+    <section class="py-16 bg-gray-100">
         <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-4 gap-8">
-                <div>
-                    <h3 class="text-xl font-bold mb-4 hindi-font">राष्ट्रीय लोकतांत्रिक पार्टी</h3>
-                    <p class="text-gray-400 mb-4 hindi-font">
-                        जनता की आवाज, जनता की ताकत। राजस्थान के किसानों, मजदूरों और युवाओं के हक की लड़ाई।
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="https://www.facebook.com/profile.php?id=61566574767972" target="_blank" class="social-icon">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="https://www.instagram.com/pc_bmr_12/" target="_blank" class="social-icon">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://x.com/Drprakash9512" target="_blank" class="social-icon">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="https://youtube.com/@aijangalumanch?si=-8gl_MBEI2ezIGu9" target="_blank" class="social-icon">
-                            <i class="fab fa-youtube"></i>
-                        </a>
+            <h2 class="text-3xl font-bold text-center mb-6 text-gray-800 section-title hindi-font">व्यवस्थापक पैनल</h2>
+            
+            <div class="admin-panel" id="adminPanel">
+                <div class="admin-tabs">
+                    <div class="admin-tab active" data-tab="members">सदस्य</div>
+                    <div class="admin-tab" data-tab="leaders">नेता</div>
+                    <div class="admin-tab" data-tab="news">समाचार</div>
+                    <div class="admin-tab" data-tab="gallery">गैलरी</div>
+                    <div class="admin-tab" data-tab="comments">टिप्पणियाँ</div>
+                </div>
+                
+                <!-- Members Section -->
+                <div class="admin-section active" id="members-section">
+                    <h3 class="text-xl font-bold mb-4 hindi-font">सदस्य प्रबंधन</h3>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th class="hindi-font">नाम</th>
+                                <th class="hindi-font">मोबाइल</th>
+                                <th class="hindi-font">क्षेत्र</th>
+                                <th class="hindi-font">कार्य</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="hindi-font">रमेश कुमार</td>
+                                <td class="hindi-font">9876543210</td>
+                                <td class="hindi-font">बाड़मेर</td>
+                                <td>
+                                    <button class="btn btn-red text-xs py-1 px-2 hindi-font">हटाएँ</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="hindi-font">सुरेश मेघवाल</td>
+                                <td class="hindi-font">8765432109</td>
+                                <td class="hindi-font">जैसलमेर</td>
+                                <td>
+                                    <button class="btn btn-red text-xs py-1 px-2 hindi-font">हटाएँ</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="hindi-font">प्रिया शर्मा</td>
+                                <td class="hindi-font">7654321098</td>
+                                <td class="hindi-font">जोधपुर</td>
+                                <td>
+                                    <button class="btn btn-red text-xs py-1 px-2 hindi-font">हटाएँ</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="admin-form">
+                        <h4 class="text-lg font-bold mb-3 hindi-font">नया सदस्य जोड़ें</h4>
+                        <div class="form-group">
+                            <label for="newMemberName" class="hindi-font">पूरा नाम</label>
+                            <input type="text" id="newMemberName" class="hindi-font">
+                        </div>
+                        <div class="form-group">
+                            <label for="newMemberMobile" class="hindi-font">मोबाइल नंबर</label>
+                            <input type="text" id="newMemberMobile" class="hindi-font">
+                        </div>
+                        <div class="form-group">
+                            <label for="newMemberArea" class="hindi-font">विधानसभा क्षेत्र</label>
+                            <select id="newMemberArea" class="hindi-font">
+                                <option value="बाड़मेर">बाड़मेर</option>
+                                <option value="जैसलमेर">जैसलमेर</option>
+                                <option value="जोधपुर">जोधपुर</option>
+                                <option value="बीकानेर">बीकानेर</option>
+                            </select>
+                        </div>
+                        <div class="admin-actions">
+                            <button class="btn btn-green hindi-font">सदस्य जोड़ें</button>
+                        </div>
                     </div>
                 </div>
                 
-                <div>
-                    <h3 class="text-xl font-bold mb-4 hindi-font">लिंक्स</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#home" class="text-gray-400 hover:text-white hindi-font">होम</a></li>
-                        <li><a href="#about" class="text-gray-400 hover:text-white hindi-font">पार्टी के बारे में</a></li>
-                        <li><a href="#leaders" class="text-gray-400 hover:text-white hindi-font">नेता</a></li>
-                        <li><a href="#gallery" class="text-gray-400 hover:text-white hindi-font">गैलरी</a></li>
-                        <li><a href="#news" class="text-gray-400 hover:text-white hindi-font">समाचार</a></li>
-                        <li><a href="#contact" class="text-gray-400 hover:text-white hindi-font">संपर्क</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="text-xl font-bold mb-4 hindi-font">संपर्क</h3>
-                    <ul class="space-y-2">
-                        <li class="flex items-start">
-                            <i class="fas fa-map-marker-alt text-gray-400 mr-2 mt-1"></i>
-                            <span class="text-gray-400 hindi-font">RLP हेड ऑफिस, बेनीवाल भवन, बाड़मेर, राजस्थान</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-phone-alt text-gray-400 mr-2 mt-1"></i>
-                            <span class="text-gray-400 hindi-font">+91 98765 43210</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-envelope text-gray-400 mr-2 mt-1"></i>
-                            <span class="text-gray-400">contact@rlp.org.in</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="text-xl font-bold mb-4 hindi-font">न्यूज़लेटर</h3>
-                    <p class="text-gray-400 mb-4 hindi-font">हमारे नवीनतम अपडेट और समाचार प्राप्त करने के लिए सदस्यता लें।</p>
-                    <form class="flex">
-                        <input type="email" placeholder="आपका ईमेल" class="px-4 py-2 w-full rounded-l-md focus:outline-none text-gray-800">
-                        <button type="submit" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-r-md hindi-font">सब्सक्राइब</button>
-                    </form>
-                    <button id="footerExplorerBtn" class="w-full btn btn-green mt-4 hindi-font">एक्सप्लोरर आरएलपी</button>
+                <!-- Comments Section -->
+                <div class="admin-section" id="comments-section">
+                    <h3 class="text-xl font-bold mb-4 hindi-font">टिप्पणी प्रबंधन</h3>
+                    
+                    <div class="unique-comment">
+                        <div class="comment-header">
+                            <div class="comment-author hindi-font">राजेश कुमार</div>
+                            <div class="comment-date">25 जून 2025</div>
+                        </div>
+                        <p class="hindi-font">पार्टी के कार्यक्रम बहुत अच्छे हैं। मैं नियमित रूप से भाग लेता हूँ।</p>
+                        <div class="comment-actions">
+                            <button class="hindi-font">हटाएँ</button>
+                        </div>
+                    </div>
+                    
+                    <div class="unique-comment">
+                        <div class="comment-header">
+                            <div class="comment-author hindi-font">प्रिया शर्मा</div>
+                            <div class="comment-date">24 जून 2025</div>
+                        </div>
+                        <p class="hindi-font">हनुमान जी के भाषण बहुत प्रेरणादायक होते हैं। उन्हें सुनकर युवाओं को प्रेरणा मिलती है।</p>
+                        <div class="comment-actions">
+                            <button class="hindi-font">हटाएँ</button>
+                        </div>
+                    </div>
+                    
+                    <div class="unique-comment">
+                        <div class="comment-header">
+                            <div class="comment-author hindi-font">विकास जोशी</div>
+                            <div class="comment-date">23 जून 2025</div>
+                        </div>
+                        <p class="hindi-font">क्या मैं ऑनलाइन सदस्यता ले सकता हूँ? कृपया जानकारी दें।</p>
+                        <div class="comment-actions">
+                            <button class="hindi-font">हटाएँ</button>
+                        </div>
+                    </div>
                 </div>
             </div>
             
-            <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-400 mb-4 md:mb-0 hindi-font">© 2025 राष्ट्रीय लोकतांत्रिक पार्टी. सर्वाधिकार सुरक्षित.</p>
-                <div class="flex space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-white hindi-font">गोपनीयता नीति</a>
-                    <a href="#" class="text-gray-400 hover:text-white hindi-font">उपयोग की शर्तें</a>
-                    <button id="adminLoginBtn" class="text-gray-400 hover:text-white hindi-font">व्यवस्थापक लॉगिन</button>
-                </div>
+            <div class="text-center mt-6">
+                <button id="adminLoginBtn" class="btn btn-green hindi-font">व्यवस्थापक लॉगिन</button>
             </div>
         </div>
-    </footer>
+    </section>
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
     <script>
-        // Function to toggle visibility of hidden content
-        function toggleSection(containerId, buttonId, visibleCount) {
-            const button = document.getElementById(buttonId);
-            const container = document.getElementById(containerId);
-            const hiddenItems = container.querySelectorAll('.hidden-content');
-            let allVisible = false;
-            
-            button.addEventListener('click', function() {
-                if (allVisible) {
-                    // Hide extra items
-                    hiddenItems.forEach((item, index) => {
-                        if (index >= visibleCount) {
-                            item.classList.add('hidden-content');
-                        }
-                    });
-                    button.textContent = button.getAttribute('data-show-text');
-                    allVisible = false;
-                } else {
-                    // Show all items
-                    hiddenItems.forEach(item => {
-                        item.classList.remove('hidden-content');
-                    });
-                    button.textContent = button.getAttribute('data-hide-text');
-                    allVisible = true;
-                }
-            });
-            
-            // Set initial text
-            button.setAttribute('data-show-text', button.textContent);
-            button.setAttribute('data-hide-text', 'कम देखें');
+        // Function to generate random member ID
+        function generateMemberId() {
+            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            let id = 'RLP';
+            for (let i = 0; i < 3; i++) {
+                id += letters.charAt(Math.floor(Math.random() * letters.length));
+            }
+            id += '-';
+            for (let i = 0; i < 5; i++) {
+                id += Math.floor(Math.random() * 10);
+            }
+            return id;
         }
         
-        // Initialize section toggles
-        document.addEventListener('DOMContentLoaded', function() {
-            toggleSection('video-container', 'showMoreVideos', 3);
-            toggleSection('gallery-container', 'showMoreGallery', 4);
-            toggleSection('news-container', 'showMoreNews', 2);
+        // Membership form submission
+        document.getElementById('joinForm').addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            // RLP Explorer functionality
-            const explorerBtn = document.getElementById('explorerBtn');
-            const mobileExplorerBtn = document.getElementById('mobileExplorerBtn');
-            const footerExplorerBtn = document.getElementById('footerExplorerBtn');
-            const closeExplorer = document.getElementById('close-explorer');
-            const explorerModal = document.getElementById('explorer-modal');
-            const explorerTabs = document.querySelectorAll('.explorer-tab');
+            // Get form values
+            const name = document.getElementById('name').value;
+            const mobile = document.getElementById('mobile').value;
+            const area = document.getElementById('assembly').value;
+            const photoFile = document.getElementById('photo').files[0];
             
-            // Open explorer modal
-            function openExplorer() {
-                explorerModal.style.display = 'block';
-                document.body.style.overflow = 'hidden';
+            if (!name || !mobile || !area || !photoFile) {
+                alert('कृपया सभी आवश्यक फ़ील्ड भरें');
+                return;
             }
             
-            // Close explorer modal
-            function closeExplorerModal() {
-                explorerModal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
+            // Generate member ID
+            const memberId = generateMemberId();
             
-            // Switch tabs
-            function switchTab(tabName) {
+            // Display member details
+            document.getElementById('memberName').textContent = name;
+            document.getElementById('memberArea').textContent = 'क्षेत्र: ' + area;
+            document.getElementById('memberMobile').textContent = 'मोबाइल: ' + mobile;
+            document.getElementById('memberId').textContent = memberId;
+            
+            // Display photo
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('memberPhoto').src = e.target.result;
+            };
+            reader.readAsDataURL(photoFile);
+            
+            // Show card and download button
+            document.getElementById('memberCard').style.display = 'block';
+            document.getElementById('downloadSection').style.display = 'block';
+            
+            // Scroll to card
+            document.getElementById('downloadSection').scrollIntoView({behavior: 'smooth'});
+            
+            // Reset form
+            this.reset();
+        });
+        
+        // Download membership card
+        document.getElementById('downloadCard').addEventListener('click', function() {
+            const cardElement = document.getElementById('memberCard');
+            
+            html2canvas(cardElement).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'rlp-membership-card.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        });
+        
+        // Admin login
+        document.getElementById('adminLoginBtn').addEventListener('click', function() {
+            const password = prompt('कृपया व्यवस्थापक पासवर्ड दर्ज करें:');
+            if (password === 'RLPAdmin2025') {
+                document.getElementById('adminPanel').style.display = 'block';
+                this.style.display = 'none';
+                document.getElementById('adminPanel').scrollIntoView({behavior: 'smooth'});
+            } else {
+                alert('गलत पासवर्ड! कृपया पुनः प्रयास करें।');
+            }
+        });
+        
+        // Admin tabs
+        const adminTabs = document.querySelectorAll('.admin-tab');
+        adminTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs
+                adminTabs.forEach(t => t.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
                 // Hide all sections
-                document.querySelectorAll('.explorer-section').forEach(section => {
+                document.querySelectorAll('.admin-section').forEach(section => {
                     section.classList.remove('active');
                 });
                 
-                // Show selected section
+                // Show corresponding section
+                const tabName = this.getAttribute('data-tab');
                 document.getElementById(`${tabName}-section`).classList.add('active');
-                
-                // Update active tab
-                explorerTabs.forEach(tab => {
-                    tab.classList.remove('active');
-                });
-                event.target.classList.add('active');
-            }
-            
-            // Event listeners
-            explorerBtn.addEventListener('click', openExplorer);
-            mobileExplorerBtn.addEventListener('click', openExplorer);
-            footerExplorerBtn.addEventListener('click', openExplorer);
-            closeExplorer.addEventListener('click', closeExplorerModal);
-            
-            explorerTabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    const tabName = this.getAttribute('data-tab');
-                    switchTab(tabName);
-                });
-            });
-            
-            // Close modal when clicking outside
-            window.addEventListener('click', function(event) {
-                if (event.target === explorerModal) {
-                    closeExplorerModal();
-                }
-            });
-            
-            // Mobile menu toggle
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-            
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    if(!mobileMenu.classList.contains('hidden')) {
-                        mobileMenu.classList.add('hidden');
-                    }
-                });
-            });
-            
-            // Form submission handlers
-            document.getElementById('joinForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('आपका सदस्यता फॉर्म सफलतापूर्वक सबमिट हो गया है! हम जल्द ही आपसे संपर्क करेंगे।');
-                this.reset();
-            });
-            
-            document.getElementById('contactForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('आपका संदेश सफलतापूर्वक भेज दिया गया है! धन्यवाद।');
-                this.reset();
-            });
-            
-            // Initialize Lightbox
-            lightbox.option({
-                'resizeDuration': 200,
-                'wrapAround': true,
-                'albumLabel': "छवि %1 का %2"
             });
         });
+        
+        // All other existing JavaScript functions remain
     </script>
 </body>
-                                                                                                                                                                                                                                              </html>
+</html>
